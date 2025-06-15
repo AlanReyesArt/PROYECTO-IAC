@@ -1,0 +1,1959 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="87" tests="249" time="0.0">
+	<testsuite disabled="0" errors="0" failures="80" name="terraform scan" skipped="0" tests="242" time="0">
+		<properties>
+			<property name="directory" value="['/app']"/>
+			<property name="add_check" value="False"/>
+			<property name="list" value="False"/>
+			<property name="output" value="['junitxml']"/>
+			<property name="output_file_path" value="results.xml"/>
+			<property name="output_bc_ids" value="False"/>
+			<property name="include_all_checkov_policies" value="True"/>
+			<property name="quiet" value="False"/>
+			<property name="compact" value="False"/>
+			<property name="framework" value="['all']"/>
+			<property name="skip_framework" value="[]"/>
+			<property name="run_all_external_checks" value="False"/>
+			<property name="soft_fail" value="False"/>
+			<property name="skip_results_upload" value="False"/>
+			<property name="repo_id" value="cli_repo/app"/>
+			<property name="branch" value="master"/>
+			<property name="skip_download" value="False"/>
+			<property name="use_enforcement_rules" value="False"/>
+			<property name="external_modules_download_path" value=".external_modules"/>
+			<property name="evaluate_variables" value="True"/>
+			<property name="no_cert_verify" value="False"/>
+			<property name="create_baseline" value="False"/>
+			<property name="output_baseline_as_skipped" value="False"/>
+			<property name="secrets_scan_file_type" value="[]"/>
+			<property name="enable_secret_scan_all_files" value="False"/>
+			<property name="block_list_secret_scan" value="[]"/>
+			<property name="summary_position" value="top"/>
+			<property name="skip_resources_without_violations" value="False"/>
+			<property name="deep_analysis" value="False"/>
+			<property name="no_fail_on_crash" value="False"/>
+			<property name="mask" value="defaultdict(&lt;class 'set'&gt;, {})"/>
+			<property name="scan_secrets_history" value="False"/>
+			<property name="secrets_history_timeout" value="12h"/>
+			<property name="custom_tool_name" value="Checkov"/>
+		</properties>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/api_gateway.tf.aws_iam_role.api_gateway_role" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/api_gateway.tf.aws_iam_role.api_gateway_role" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/api_gateway.tf.aws_iam_role.api_gateway_role" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_288] Ensure IAM policies does not allow data exfiltration" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_286] Ensure IAM policies does not allow privilege escalation" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_290] Ensure IAM policies does not allow write access without constraints" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_289] Ensure IAM policies does not allow permissions management / resource exposure without constraints" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_355] Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_287] Ensure IAM policies does not allow credentials exposure" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_70] Ensure API gateway method has authorization or API key set" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_70] Ensure API gateway method has authorization or API key set" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_post" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_post" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_70] Ensure API gateway method has authorization or API key set" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_70] Ensure API gateway method has authorization or API key set" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_put" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_put" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_70] Ensure API gateway method has authorization or API key set" classname="/api_gateway.tf.aws_api_gateway_method.reportes_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.reportes_get" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/api_gateway.tf.aws_lambda_permission.api_gateway_reclamos" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/api_gateway.tf.aws_lambda_permission.api_gateway_reclamos" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/api_gateway.tf.aws_lambda_permission.api_gateway_reportes" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/api_gateway.tf.aws_lambda_permission.api_gateway_reportes" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_59] Ensure there is no open access to back-end resources through API" classname="/api_gateway.tf.aws_api_gateway_method.options_reclamos" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_217] Ensure Create before destroy for API deployments" classname="/api_gateway.tf.aws_api_gateway_deployment.main" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV_AWS_34] Ensure CloudFront distribution ViewerProtocolPolicy is set to HTTPS" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV_AWS_216] Ensure CloudFront distribution is enabled" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV_AWS_305] Ensure CloudFront distribution has a default root object configured" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reclamos_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_procesamiento_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reportes_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_control_plazos_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_notificaciones_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_66] Ensure that CloudWatch Log Group specifies retention days" classname="/cloudwatch.tf.aws_cloudwatch_log_group.api_gateway_logs" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.lambda_reclamos_errors" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.lambda_reclamos_duration" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.lambda_procesamiento_errors" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.dynamodb_throttles" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.api_gateway_4xx_errors" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_319] Ensure that CloudWatch alarm actions are enabled" classname="/cloudwatch.tf.aws_cloudwatch_metric_alarm.api_gateway_5xx_errors" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/cloudwatch.tf.aws_lambda_permission.allow_eventbridge_control_plazos" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/cloudwatch.tf.aws_lambda_permission.allow_eventbridge_control_plazos" file="/cloudwatch.tf"/>
+		<testcase name="[NONE][CKV_AWS_366] Ensure AWS Cognito identity pool does not allow unauthenticated guest access" classname="/cognito.tf.aws_cognito_identity_pool.main" file="/cognito.tf"/>
+		<testcase name="[NONE][CKV_AWS_28] Ensure DynamoDB point in time recovery (backup) is enabled" classname="/dynamodb.tf.aws_dynamodb_table.reclamos" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV_AWS_28] Ensure DynamoDB point in time recovery (backup) is enabled" classname="/dynamodb.tf.aws_dynamodb_table.ciudadanos" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV_AWS_28] Ensure DynamoDB point in time recovery (backup) is enabled" classname="/dynamodb.tf.aws_dynamodb_table.funcionarios" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV_AWS_28] Ensure DynamoDB point in time recovery (backup) is enabled" classname="/dynamodb.tf.aws_dynamodb_table.reportes" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.lambda_reclamos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.lambda_reclamos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.lambda_reclamos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.lambda_reclamos_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.lambda_reclamos_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.lambda_procesamiento_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.lambda_procesamiento_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.lambda_procesamiento_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.lambda_procesamiento_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.lambda_procesamiento_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.lambda_reportes_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.lambda_reportes_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.lambda_reportes_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.lambda_reportes_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.lambda_reportes_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.lambda_control_plazos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.lambda_control_plazos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.lambda_control_plazos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.lambda_control_plazos_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.lambda_control_plazos_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.lambda_notificaciones_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.lambda_notificaciones_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.lambda_notificaciones_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.lambda_notificaciones_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.lambda_notificaciones_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.api_gateway_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.api_gateway_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.api_gateway_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_288] Ensure IAM policies does not allow data exfiltration" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_286] Ensure IAM policies does not allow privilege escalation" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_289] Ensure IAM policies does not allow permissions management / resource exposure without constraints" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_287] Ensure IAM policies does not allow credentials exposure" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/iam.tf.aws_iam_role.authenticated_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/iam.tf.aws_iam_role.authenticated_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/iam.tf.aws_iam_role.authenticated_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_288] Ensure IAM policies does not allow data exfiltration" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_286] Ensure IAM policies does not allow privilege escalation" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_290] Ensure IAM policies does not allow write access without constraints" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_289] Ensure IAM policies does not allow permissions management / resource exposure without constraints" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_355] Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_287] Ensure IAM policies does not allow credentials exposure" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV_AWS_60] Ensure IAM role allows only specific services or principals to assume it" classname="/lambda.tf.aws_iam_role.lambda_role" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_274] Disallow IAM roles, users, and groups from using the AWS AdministratorAccess policy" classname="/lambda.tf.aws_iam_role.lambda_role" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_61] Ensure AWS IAM policy does not allow assume role permission across all services" classname="/lambda.tf.aws_iam_role.lambda_role" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_63] Ensure no IAM policies documents allow &quot;*&quot; as a statement's actions" classname="/lambda.tf.aws_iam_role_policy.lambda_policy" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_62] Ensure IAM policies that allow full &quot;*-*&quot; administrative privileges are not created" classname="/lambda.tf.aws_iam_role_policy.lambda_policy" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_363] Ensure Lambda Runtime is not deprecated" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_45] Ensure no hard-coded secrets exist in lambda environment" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_363] Ensure Lambda Runtime is not deprecated" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_45] Ensure no hard-coded secrets exist in lambda environment" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_363] Ensure Lambda Runtime is not deprecated" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_45] Ensure no hard-coded secrets exist in lambda environment" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_363] Ensure Lambda Runtime is not deprecated" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_45] Ensure no hard-coded secrets exist in lambda environment" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_363] Ensure Lambda Runtime is not deprecated" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_45] Ensure no hard-coded secrets exist in lambda environment" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_reclamos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_reclamos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_plazos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_plazos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_301] Ensure that AWS Lambda function is not publicly accessible" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_reportes" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_364] Ensure that AWS Lambda function permissions delegated to AWS services are limited by SourceArn or SourceAccount" classname="/lambda.tf.aws_lambda_permission.sns_invoke_notifications_reportes" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_41] Ensure no hard coded AWS access key and secret key exists in provider" classname="/main.tf.aws.default" file="/main.tf"/>
+		<testcase name="[NONE][CKV_AWS_93] Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_56] Ensure S3 bucket has 'restrict_public_buckets' enabled" classname="/s3.tf.aws_s3_bucket_public_access_block.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_55] Ensure S3 bucket has ignore public ACLs enabled" classname="/s3.tf.aws_s3_bucket_public_access_block.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_54] Ensure S3 bucket has block public policy enabled" classname="/s3.tf.aws_s3_bucket_public_access_block.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_53] Ensure S3 bucket has block public ACLS enabled" classname="/s3.tf.aws_s3_bucket_public_access_block.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_70] Ensure S3 bucket does not allow an action with any Principal" classname="/s3.tf.aws_s3_bucket_policy.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_93] Ensure S3 bucket policy does not lockout all but root user. (Prevent lockouts needing root account fixes)" classname="/s3.tf.aws_s3_bucket_policy.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_365] Ensure SES Configuration Set enforces TLS usage" classname="/ses.tf.aws_ses_configuration_set.main" file="/ses.tf"/>
+		<testcase name="[NONE][CKV_AWS_169] Ensure SNS topic policy is not public by only allowing specific services or principals to access it" classname="/sns.tf.aws_sns_topic_policy.reclamos_notifications_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_385] Ensure AWS SNS topic policies do not allow cross-account access" classname="/sns.tf.aws_sns_topic_policy.reclamos_notifications_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_169] Ensure SNS topic policy is not public by only allowing specific services or principals to access it" classname="/sns.tf.aws_sns_topic_policy.control_plazos_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_385] Ensure AWS SNS topic policies do not allow cross-account access" classname="/sns.tf.aws_sns_topic_policy.control_plazos_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_169] Ensure SNS topic policy is not public by only allowing specific services or principals to access it" classname="/sns.tf.aws_sns_topic_policy.reportes_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_385] Ensure AWS SNS topic policies do not allow cross-account access" classname="/sns.tf.aws_sns_topic_policy.reportes_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_169] Ensure SNS topic policy is not public by only allowing specific services or principals to access it" classname="/sns.tf.aws_sns_topic_policy.urgent_notifications_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV_AWS_385] Ensure AWS SNS topic policies do not allow cross-account access" classname="/sns.tf.aws_sns_topic_policy.urgent_notifications_policy" file="/sns.tf"/>
+		<testcase name="[NONE][CKV2_AWS_75] Ensure no open CORS policy" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV2_AWS_75] Ensure no open CORS policy" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV2_AWS_75] Ensure no open CORS policy" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV2_AWS_75] Ensure no open CORS policy" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV2_AWS_75] Ensure no open CORS policy" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV2_AWS_72] Ensure AWS CloudFront origin protocol policy enforces HTTPS-only" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV2_AWS_16] Ensure that Auto Scaling is enabled on your DynamoDB tables" classname="/dynamodb.tf.aws_dynamodb_table.reclamos" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV2_AWS_16] Ensure that Auto Scaling is enabled on your DynamoDB tables" classname="/dynamodb.tf.aws_dynamodb_table.ciudadanos" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV2_AWS_16] Ensure that Auto Scaling is enabled on your DynamoDB tables" classname="/dynamodb.tf.aws_dynamodb_table.funcionarios" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV2_AWS_16] Ensure that Auto Scaling is enabled on your DynamoDB tables" classname="/dynamodb.tf.aws_dynamodb_table.reportes" file="/dynamodb.tf"/>
+		<testcase name="[NONE][CKV2_AWS_6] Ensure that S3 bucket has a Public Access block" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_57] S3 Bucket has an ACL defined which allows public WRITE access." classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV2_AWS_40] Ensure AWS IAM policy does not allow full IAM privileges" classname="/api_gateway.tf.aws_iam_role_policy.api_gateway_policy" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_40] Ensure AWS IAM policy does not allow full IAM privileges" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_40] Ensure AWS IAM policy does not allow full IAM privileges" classname="/iam.tf.aws_iam_role_policy.authenticated_policy" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_54] Ensure AWS CloudFront distribution is using secure SSL protocols for HTTPS communication" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV_AWS_20] S3 Bucket has an ACL defined which allows public READ access." classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV2_AWS_46] Ensure AWS CloudFront Distribution with S3 have Origin Access set to enabled" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/api_gateway.tf.aws_iam_role.api_gateway_role" file="/api_gateway.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.lambda_reclamos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.lambda_procesamiento_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.lambda_reportes_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.lambda_control_plazos_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.lambda_notificaciones_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.api_gateway_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/iam.tf.aws_iam_role.authenticated_role" file="/iam.tf"/>
+		<testcase name="[NONE][CKV2_AWS_56] Ensure AWS Managed IAMFullAccess IAM policy is not used." classname="/lambda.tf.aws_iam_role.lambda_role" file="/lambda.tf"/>
+		<testcase name="[NONE][CKV_AWS_21] Ensure all data stored in the S3 bucket have versioning enabled" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV_AWS_19] Ensure all data stored in the S3 bucket is securely encrypted at rest" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf"/>
+		<testcase name="[NONE][CKV2_AWS_23] Route53 A Record has Attached Resource" classname="/route53.tf.aws_route53_record.frontend" file="/route53.tf"/>
+		<testcase name="[NONE][CKV_AWS_237] Ensure Create before destroy for API Gateway" classname="/api_gateway.tf.aws_api_gateway_rest_api.main" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure Create before destroy for API Gateway">
+Resource: aws_api_gateway_rest_api.main
+File: /api_gateway.tf: 2-11
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-aws-api-gateway-enables-create-before-destroy
+
+		2  | resource &quot;aws_api_gateway_rest_api&quot; &quot;main&quot; {
+		3  |   name        = &quot;${local.project_name}-api&quot;
+		4  |   description = &quot;API Gateway for ${local.project_name}&quot;
+		5  | 
+		6  |   endpoint_configuration {
+		7  |     types = [&quot;REGIONAL&quot;]
+		8  |   }
+		9  | 
+		10 |   tags = local.common_tags
+		11 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_174] Verify CloudFront Distribution Viewer Certificate is using TLS v1.2" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Verify CloudFront Distribution Viewer Certificate is using TLS v1.2">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-63
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_374] Ensure AWS CloudFront web distribution has geo restriction enabled" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure AWS CloudFront web distribution has geo restriction enabled">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-374
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_86] Ensure CloudFront distribution has Access Logging enabled" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure CloudFront distribution has Access Logging enabled">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/logging-20
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_310] Ensure CloudFront distributions should have origin failover configured" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure CloudFront distributions should have origin failover configured">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-310
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_68] CloudFront Distribution should have WAF enabled" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="CloudFront Distribution should have WAF enabled">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-27
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reclamos_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.lambda_reclamos_logs
+File: /cloudwatch.tf: 2-7
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		2 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_reclamos_logs&quot; {
+		3 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-reclamos&quot;
+		4 |   retention_in_days = 14
+		5 | 
+		6 |   tags = local.common_tags
+		7 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reclamos_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.lambda_reclamos_logs
+File: /cloudwatch.tf: 2-7
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		2 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_reclamos_logs&quot; {
+		3 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-reclamos&quot;
+		4 |   retention_in_days = 14
+		5 | 
+		6 |   tags = local.common_tags
+		7 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_procesamiento_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.lambda_procesamiento_logs
+File: /cloudwatch.tf: 9-14
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		9  | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_procesamiento_logs&quot; {
+		10 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-procesamiento&quot;
+		11 |   retention_in_days = 14
+		12 | 
+		13 |   tags = local.common_tags
+		14 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_procesamiento_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.lambda_procesamiento_logs
+File: /cloudwatch.tf: 9-14
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		9  | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_procesamiento_logs&quot; {
+		10 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-procesamiento&quot;
+		11 |   retention_in_days = 14
+		12 | 
+		13 |   tags = local.common_tags
+		14 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reportes_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.lambda_reportes_logs
+File: /cloudwatch.tf: 16-21
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		16 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_reportes_logs&quot; {
+		17 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-reportes&quot;
+		18 |   retention_in_days = 14
+		19 | 
+		20 |   tags = local.common_tags
+		21 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_reportes_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.lambda_reportes_logs
+File: /cloudwatch.tf: 16-21
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		16 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_reportes_logs&quot; {
+		17 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-reportes&quot;
+		18 |   retention_in_days = 14
+		19 | 
+		20 |   tags = local.common_tags
+		21 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_control_plazos_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.lambda_control_plazos_logs
+File: /cloudwatch.tf: 23-28
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		23 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_control_plazos_logs&quot; {
+		24 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-control-plazos&quot;
+		25 |   retention_in_days = 14
+		26 | 
+		27 |   tags = local.common_tags
+		28 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_control_plazos_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.lambda_control_plazos_logs
+File: /cloudwatch.tf: 23-28
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		23 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_control_plazos_logs&quot; {
+		24 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-control-plazos&quot;
+		25 |   retention_in_days = 14
+		26 | 
+		27 |   tags = local.common_tags
+		28 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_notificaciones_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.lambda_notificaciones_logs
+File: /cloudwatch.tf: 30-35
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		30 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_notificaciones_logs&quot; {
+		31 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-notificaciones&quot;
+		32 |   retention_in_days = 14
+		33 | 
+		34 |   tags = local.common_tags
+		35 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.lambda_notificaciones_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.lambda_notificaciones_logs
+File: /cloudwatch.tf: 30-35
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		30 | resource &quot;aws_cloudwatch_log_group&quot; &quot;lambda_notificaciones_logs&quot; {
+		31 |   name              = &quot;/aws/lambda/${local.project_name}-lambda-notificaciones&quot;
+		32 |   retention_in_days = 14
+		33 | 
+		34 |   tags = local.common_tags
+		35 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_158] Ensure that CloudWatch Log Group is encrypted by KMS" classname="/cloudwatch.tf.aws_cloudwatch_log_group.api_gateway_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure that CloudWatch Log Group is encrypted by KMS">
+Resource: aws_cloudwatch_log_group.api_gateway_logs
+File: /cloudwatch.tf: 38-43
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-cloudwatch-log-group-is-encrypted-by-kms
+
+		38 | resource &quot;aws_cloudwatch_log_group&quot; &quot;api_gateway_logs&quot; {
+		39 |   name              = &quot;/aws/apigateway/${local.project_name}&quot;
+		40 |   retention_in_days = 14
+		41 | 
+		42 |   tags = local.common_tags
+		43 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_338] Ensure CloudWatch log groups retains logs for at least 1 year" classname="/cloudwatch.tf.aws_cloudwatch_log_group.api_gateway_logs" file="/cloudwatch.tf">
+			<failure type="failure" message="Ensure CloudWatch log groups retains logs for at least 1 year">
+Resource: aws_cloudwatch_log_group.api_gateway_logs
+File: /cloudwatch.tf: 38-43
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-338
+
+		38 | resource &quot;aws_cloudwatch_log_group&quot; &quot;api_gateway_logs&quot; {
+		39 |   name              = &quot;/aws/apigateway/${local.project_name}&quot;
+		40 |   retention_in_days = 14
+		41 | 
+		42 |   tags = local.common_tags
+		43 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_119] Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK" classname="/dynamodb.tf.aws_dynamodb_table.reclamos" file="/dynamodb.tf">
+			<failure type="failure" message="Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK">
+Resource: aws_dynamodb_table.reclamos
+File: /dynamodb.tf: 2-79
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-52
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_119] Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK" classname="/dynamodb.tf.aws_dynamodb_table.ciudadanos" file="/dynamodb.tf">
+			<failure type="failure" message="Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK">
+Resource: aws_dynamodb_table.ciudadanos
+File: /dynamodb.tf: 82-113
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-52
+
+		82  | resource &quot;aws_dynamodb_table&quot; &quot;ciudadanos&quot; {
+		83  |   name         = &quot;${local.project_name}-ciudadanos&quot;
+		84  |   billing_mode = &quot;PAY_PER_REQUEST&quot;
+		85  |   hash_key     = &quot;ciudadanoId&quot;
+		86  | 
+		87  |   attribute {
+		88  |     name = &quot;ciudadanoId&quot;
+		89  |     type = &quot;S&quot;
+		90  |   }
+		91  | 
+		92  |   attribute {
+		93  |     name = &quot;email&quot;
+		94  |     type = &quot;S&quot;
+		95  |   }
+		96  | 
+		97  |   # GSI para búsqueda por email
+		98  |   global_secondary_index {
+		99  |     name     = &quot;EmailIndex&quot;
+		100 |     hash_key = &quot;email&quot;
+		101 |     projection_type = &quot;ALL&quot;
+		102 |   }
+		103 | 
+		104 |   point_in_time_recovery {
+		105 |     enabled = true
+		106 |   }
+		107 | 
+		108 |   server_side_encryption {
+		109 |     enabled = true
+		110 |   }
+		111 | 
+		112 |   tags = local.common_tags
+		113 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_119] Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK" classname="/dynamodb.tf.aws_dynamodb_table.funcionarios" file="/dynamodb.tf">
+			<failure type="failure" message="Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK">
+Resource: aws_dynamodb_table.funcionarios
+File: /dynamodb.tf: 116-153
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-52
+
+		116 | resource &quot;aws_dynamodb_table&quot; &quot;funcionarios&quot; {
+		117 |   name         = &quot;${local.project_name}-funcionarios&quot;
+		118 |   billing_mode = &quot;PAY_PER_REQUEST&quot;
+		119 |   hash_key     = &quot;funcionarioId&quot;
+		120 | 
+		121 |   attribute {
+		122 |     name = &quot;funcionarioId&quot;
+		123 |     type = &quot;S&quot;
+		124 |   }
+		125 | 
+		126 |   attribute {
+		127 |     name = &quot;departamento&quot;
+		128 |     type = &quot;S&quot;
+		129 |   }
+		130 | 
+		131 |   attribute {
+		132 |     name = &quot;especialidad&quot;
+		133 |     type = &quot;S&quot;
+		134 |   }
+		135 | 
+		136 |   # GSI para búsqueda por departamento
+		137 |   global_secondary_index {
+		138 |     name     = &quot;DepartamentoIndex&quot;
+		139 |     hash_key = &quot;departamento&quot;
+		140 |     range_key = &quot;especialidad&quot;
+		141 |     projection_type = &quot;ALL&quot;
+		142 |   }
+		143 | 
+		144 |   point_in_time_recovery {
+		145 |     enabled = true
+		146 |   }
+		147 | 
+		148 |   server_side_encryption {
+		149 |     enabled = true
+		150 |   }
+		151 | 
+		152 |   tags = local.common_tags
+		153 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_119] Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK" classname="/dynamodb.tf.aws_dynamodb_table.reportes" file="/dynamodb.tf">
+			<failure type="failure" message="Ensure DynamoDB Tables are encrypted using a KMS Customer Managed CMK">
+Resource: aws_dynamodb_table.reportes
+File: /dynamodb.tf: 156-200
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-52
+
+		156 | resource &quot;aws_dynamodb_table&quot; &quot;reportes&quot; {
+		157 |   name         = &quot;${local.project_name}-reportes&quot;
+		158 |   billing_mode = &quot;PAY_PER_REQUEST&quot;
+		159 |   hash_key     = &quot;reporteId&quot;
+		160 |   range_key    = &quot;fecha&quot;
+		161 | 
+		162 |   attribute {
+		163 |     name = &quot;reporteId&quot;
+		164 |     type = &quot;S&quot;
+		165 |   }
+		166 | 
+		167 |   attribute {
+		168 |     name = &quot;fecha&quot;
+		169 |     type = &quot;S&quot;
+		170 |   }
+		171 | 
+		172 |   attribute {
+		173 |     name = &quot;tipo&quot;
+		174 |     type = &quot;S&quot;
+		175 |   }
+		176 | 
+		177 |   # GSI para consultas por tipo de reporte
+		178 |   global_secondary_index {
+		179 |     name     = &quot;TipoIndex&quot;
+		180 |     hash_key = &quot;tipo&quot;
+		181 |     range_key = &quot;fecha&quot;
+		182 |     projection_type = &quot;ALL&quot;
+		183 |   }
+		184 | 
+		185 |   # TTL para limpieza automática de reportes antiguos
+		186 |   ttl {
+		187 |     attribute_name = &quot;ttl&quot;
+		188 |     enabled        = true
+		189 |   }
+		190 | 
+		191 |   point_in_time_recovery {
+		192 |     enabled = true
+		193 |   }
+		194 | 
+		195 |   server_side_encryption {
+		196 |     enabled = true
+		197 |   }
+		198 | 
+		199 |   tags = local.common_tags
+		200 | }</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_290] Ensure IAM policies does not allow write access without constraints" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf">
+			<failure type="failure" message="Ensure IAM policies does not allow write access without constraints">
+Resource: aws_iam_role_policy.api_gateway_logs_policy
+File: /iam.tf: 361-383
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-290
+
+		361 | resource &quot;aws_iam_role_policy&quot; &quot;api_gateway_logs_policy&quot; {
+		362 |   name = &quot;${local.project_name}-api-gateway-logs-policy&quot;
+		363 |   role = aws_iam_role.api_gateway_role.id
+		364 | 
+		365 |   policy = jsonencode({
+		366 |     Version = &quot;2012-10-17&quot;
+		367 |     Statement = [
+		368 |       {
+		369 |         Effect = &quot;Allow&quot;
+		370 |         Action = [
+		371 |           &quot;logs:CreateLogGroup&quot;,
+		372 |           &quot;logs:CreateLogStream&quot;,
+		373 |           &quot;logs:DescribeLogGroups&quot;,
+		374 |           &quot;logs:DescribeLogStreams&quot;,
+		375 |           &quot;logs:PutLogEvents&quot;,
+		376 |           &quot;logs:GetLogEvents&quot;,
+		377 |           &quot;logs:FilterLogEvents&quot;
+		378 |         ]
+		379 |         Resource = &quot;*&quot;
+		380 |       }
+		381 |     ]
+		382 |   })
+		383 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_355] Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions" classname="/iam.tf.aws_iam_role_policy.api_gateway_logs_policy" file="/iam.tf">
+			<failure type="failure" message="Ensure no IAM policies documents allow &quot;*&quot; as a statement's resource for restrictable actions">
+Resource: aws_iam_role_policy.api_gateway_logs_policy
+File: /iam.tf: 361-383
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-iam-policies/bc-aws-355
+
+		361 | resource &quot;aws_iam_role_policy&quot; &quot;api_gateway_logs_policy&quot; {
+		362 |   name = &quot;${local.project_name}-api-gateway-logs-policy&quot;
+		363 |   role = aws_iam_role.api_gateway_role.id
+		364 | 
+		365 |   policy = jsonencode({
+		366 |     Version = &quot;2012-10-17&quot;
+		367 |     Statement = [
+		368 |       {
+		369 |         Effect = &quot;Allow&quot;
+		370 |         Action = [
+		371 |           &quot;logs:CreateLogGroup&quot;,
+		372 |           &quot;logs:CreateLogStream&quot;,
+		373 |           &quot;logs:DescribeLogGroups&quot;,
+		374 |           &quot;logs:DescribeLogStreams&quot;,
+		375 |           &quot;logs:PutLogEvents&quot;,
+		376 |           &quot;logs:GetLogEvents&quot;,
+		377 |           &quot;logs:FilterLogEvents&quot;
+		378 |         ]
+		379 |         Resource = &quot;*&quot;
+		380 |       }
+		381 |     ]
+		382 |   })
+		383 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_272] Ensure AWS Lambda function is configured to validate code-signing" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="Ensure AWS Lambda function is configured to validate code-signing">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-272
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_173] Check encryption settings for Lambda environmental variable" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="Check encryption settings for Lambda environmental variable">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-5
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_115] Ensure that AWS Lambda function is configured for function-level concurrent execution limit" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for function-level concurrent execution limit">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_116] Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_117] Ensure that AWS Lambda function is configured inside a VPC" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured inside a VPC">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_50] X-Ray tracing is enabled for Lambda" classname="/lambda.tf.aws_lambda_function.lambda_reclamos" file="/lambda.tf">
+			<failure type="failure" message="X-Ray tracing is enabled for Lambda">
+Resource: aws_lambda_function.lambda_reclamos
+File: /lambda.tf: 97-119
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-4
+
+		97  | resource &quot;aws_lambda_function&quot; &quot;lambda_reclamos&quot; {
+		98  |   filename         = &quot;lambda_reclamos.zip&quot;
+		99  |   function_name    = &quot;${local.project_name}-reclamos&quot;
+		100 |   role            = aws_iam_role.lambda_role.arn
+		101 |   handler         = &quot;index.handler&quot;
+		102 |   runtime         = &quot;python3.9&quot;
+		103 |   timeout         = 30
+		104 | 
+		105 |   environment {
+		106 |     variables = {
+		107 |       DYNAMODB_TABLE_RECLAMOS    = aws_dynamodb_table.reclamos.name
+		108 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		109 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		110 |       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
+		111 |       SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+		112 |     }
+		113 |   }
+		114 | 
+		115 |   tags = local.common_tags
+		116 | 
+		117 |   # Placeholder file creation
+		118 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		119 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_272] Ensure AWS Lambda function is configured to validate code-signing" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="Ensure AWS Lambda function is configured to validate code-signing">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-272
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_173] Check encryption settings for Lambda environmental variable" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="Check encryption settings for Lambda environmental variable">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-5
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_115] Ensure that AWS Lambda function is configured for function-level concurrent execution limit" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for function-level concurrent execution limit">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_116] Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_117] Ensure that AWS Lambda function is configured inside a VPC" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured inside a VPC">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_50] X-Ray tracing is enabled for Lambda" classname="/lambda.tf.aws_lambda_function.lambda_procesamiento" file="/lambda.tf">
+			<failure type="failure" message="X-Ray tracing is enabled for Lambda">
+Resource: aws_lambda_function.lambda_procesamiento
+File: /lambda.tf: 122-142
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-4
+
+		122 | resource &quot;aws_lambda_function&quot; &quot;lambda_procesamiento&quot; {
+		123 |   filename         = &quot;lambda_procesamiento.zip&quot;
+		124 |   function_name    = &quot;${local.project_name}-procesamiento&quot;
+		125 |   role            = aws_iam_role.lambda_role.arn
+		126 |   handler         = &quot;index.handler&quot;
+		127 |   runtime         = &quot;python3.9&quot;
+		128 |   timeout         = 60
+		129 | 
+		130 |   environment {
+		131 |     variables = {
+		132 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		133 |       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
+		134 |       SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
+		135 |       SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
+		136 |     }
+		137 |   }
+		138 | 
+		139 |   tags = local.common_tags
+		140 | 
+		141 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		142 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_272] Ensure AWS Lambda function is configured to validate code-signing" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="Ensure AWS Lambda function is configured to validate code-signing">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-272
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_173] Check encryption settings for Lambda environmental variable" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="Check encryption settings for Lambda environmental variable">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-5
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_115] Ensure that AWS Lambda function is configured for function-level concurrent execution limit" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for function-level concurrent execution limit">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_116] Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_117] Ensure that AWS Lambda function is configured inside a VPC" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured inside a VPC">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_50] X-Ray tracing is enabled for Lambda" classname="/lambda.tf.aws_lambda_function.lambda_reportes" file="/lambda.tf">
+			<failure type="failure" message="X-Ray tracing is enabled for Lambda">
+Resource: aws_lambda_function.lambda_reportes
+File: /lambda.tf: 145-164
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-4
+
+		145 | resource &quot;aws_lambda_function&quot; &quot;lambda_reportes&quot; {
+		146 |   filename         = &quot;lambda_reportes.zip&quot;
+		147 |   function_name    = &quot;${local.project_name}-reportes&quot;
+		148 |   role            = aws_iam_role.lambda_role.arn
+		149 |   handler         = &quot;index.handler&quot;
+		150 |   runtime         = &quot;python3.9&quot;
+		151 |   timeout         = 60
+		152 | 
+		153 |   environment {
+		154 |     variables = {
+		155 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		156 |       DYNAMODB_TABLE_REPORTES = aws_dynamodb_table.reportes.name
+		157 |       SNS_TOPIC_REPORTES     = aws_sns_topic.reportes_notifications.arn
+		158 |     }
+		159 |   }
+		160 | 
+		161 |   tags = local.common_tags
+		162 | 
+		163 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		164 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_272] Ensure AWS Lambda function is configured to validate code-signing" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="Ensure AWS Lambda function is configured to validate code-signing">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-272
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_173] Check encryption settings for Lambda environmental variable" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="Check encryption settings for Lambda environmental variable">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-5
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_115] Ensure that AWS Lambda function is configured for function-level concurrent execution limit" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for function-level concurrent execution limit">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_116] Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_117] Ensure that AWS Lambda function is configured inside a VPC" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured inside a VPC">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_50] X-Ray tracing is enabled for Lambda" classname="/lambda.tf.aws_lambda_function.lambda_control_plazos" file="/lambda.tf">
+			<failure type="failure" message="X-Ray tracing is enabled for Lambda">
+Resource: aws_lambda_function.lambda_control_plazos
+File: /lambda.tf: 167-186
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-4
+
+		167 | resource &quot;aws_lambda_function&quot; &quot;lambda_control_plazos&quot; {
+		168 |   filename         = &quot;lambda_control_plazos.zip&quot;
+		169 |   function_name    = &quot;${local.project_name}-control-plazos&quot;
+		170 |   role            = aws_iam_role.lambda_role.arn
+		171 |   handler         = &quot;index.handler&quot;
+		172 |   runtime         = &quot;python3.9&quot;
+		173 |   timeout         = 300
+		174 | 
+		175 |   environment {
+		176 |     variables = {
+		177 |       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
+		178 |       SNS_TOPIC_ALERTS       = aws_sns_topic.control_plazos_alerts.arn
+		179 |       SNS_TOPIC_URGENT       = aws_sns_topic.urgent_notifications.arn
+		180 |     }
+		181 |   }
+		182 | 
+		183 |   tags = local.common_tags
+		184 | 
+		185 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		186 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_272] Ensure AWS Lambda function is configured to validate code-signing" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="Ensure AWS Lambda function is configured to validate code-signing">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-272
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_173] Check encryption settings for Lambda environmental variable" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="Check encryption settings for Lambda environmental variable">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-5
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_115] Ensure that AWS Lambda function is configured for function-level concurrent execution limit" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for function-level concurrent execution limit">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-function-level-concurrent-execution-limit
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_116] Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured for a Dead Letter Queue(DLQ)">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-for-a-dead-letter-queue-dlq
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_117] Ensure that AWS Lambda function is configured inside a VPC" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="Ensure that AWS Lambda function is configured inside a VPC">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-aws-lambda-function-is-configured-inside-a-vpc-1
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_50] X-Ray tracing is enabled for Lambda" classname="/lambda.tf.aws_lambda_function.lambda_notificaciones" file="/lambda.tf">
+			<failure type="failure" message="X-Ray tracing is enabled for Lambda">
+Resource: aws_lambda_function.lambda_notificaciones
+File: /lambda.tf: 189-210
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-serverless-policies/bc-aws-serverless-4
+
+		189 | resource &quot;aws_lambda_function&quot; &quot;lambda_notificaciones&quot; {
+		190 |   filename         = &quot;lambda_notificaciones.zip&quot;
+		191 |   function_name    = &quot;${local.project_name}-notificaciones&quot;
+		192 |   role            = aws_iam_role.lambda_role.arn
+		193 |   handler         = &quot;index.handler&quot;
+		194 |   runtime         = &quot;python3.9&quot;
+		195 |   timeout         = 30
+		196 | 
+		197 |   environment {
+		198 |     variables = {
+		199 |       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
+		200 |       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
+		201 |       SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
+		202 |       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
+		203 |       FROM_EMAIL                = var.notification_email
+		204 |     }
+		205 |   }
+		206 | 
+		207 |   tags = local.common_tags
+		208 | 
+		209 |   depends_on = [aws_iam_role_policy.lambda_policy]
+		210 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_149] Ensure that Secrets Manager secret is encrypted using KMS CMK" classname="/secrets_manager.tf.aws_secretsmanager_secret.api_keys" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure that Secrets Manager secret is encrypted using KMS CMK">
+Resource: aws_secretsmanager_secret.api_keys
+File: /secrets_manager.tf: 2-8
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-secrets-manager-secret-is-encrypted-using-kms
+
+		2 | resource &quot;aws_secretsmanager_secret&quot; &quot;api_keys&quot; {
+		3 |   name                    = &quot;${local.project_name}/api-keys&quot;
+		4 |   description             = &quot;API keys for external services&quot;
+		5 |   recovery_window_in_days = 7
+		6 | 
+		7 |   tags = local.common_tags
+		8 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_149] Ensure that Secrets Manager secret is encrypted using KMS CMK" classname="/secrets_manager.tf.aws_secretsmanager_secret.database_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure that Secrets Manager secret is encrypted using KMS CMK">
+Resource: aws_secretsmanager_secret.database_config
+File: /secrets_manager.tf: 26-32
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-secrets-manager-secret-is-encrypted-using-kms
+
+		26 | resource &quot;aws_secretsmanager_secret&quot; &quot;database_config&quot; {
+		27 |   name                    = &quot;${local.project_name}/database-config&quot;
+		28 |   description             = &quot;External database configuration&quot;
+		29 |   recovery_window_in_days = 7
+		30 | 
+		31 |   tags = local.common_tags
+		32 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_149] Ensure that Secrets Manager secret is encrypted using KMS CMK" classname="/secrets_manager.tf.aws_secretsmanager_secret.email_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure that Secrets Manager secret is encrypted using KMS CMK">
+Resource: aws_secretsmanager_secret.email_config
+File: /secrets_manager.tf: 50-56
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-secrets-manager-secret-is-encrypted-using-kms
+
+		50 | resource &quot;aws_secretsmanager_secret&quot; &quot;email_config&quot; {
+		51 |   name                    = &quot;${local.project_name}/email-config&quot;
+		52 |   description             = &quot;Email service configuration&quot;
+		53 |   recovery_window_in_days = 7
+		54 | 
+		55 |   tags = local.common_tags
+		56 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_149] Ensure that Secrets Manager secret is encrypted using KMS CMK" classname="/secrets_manager.tf.aws_secretsmanager_secret.security_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure that Secrets Manager secret is encrypted using KMS CMK">
+Resource: aws_secretsmanager_secret.security_config
+File: /secrets_manager.tf: 75-81
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-secrets-manager-secret-is-encrypted-using-kms
+
+		75 | resource &quot;aws_secretsmanager_secret&quot; &quot;security_config&quot; {
+		76 |   name                    = &quot;${local.project_name}/security-config&quot;
+		77 |   description             = &quot;Security configuration including JWT secrets&quot;
+		78 |   recovery_window_in_days = 7
+		79 | 
+		80 |   tags = local.common_tags
+		81 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_26] Ensure all data stored in the SNS topic is encrypted" classname="/sns.tf.aws_sns_topic.reclamos_notifications" file="/sns.tf">
+			<failure type="failure" message="Ensure all data stored in the SNS topic is encrypted">
+Resource: aws_sns_topic.reclamos_notifications
+File: /sns.tf: 2-6
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15
+
+		2 | resource &quot;aws_sns_topic&quot; &quot;reclamos_notifications&quot; {
+		3 |   name = &quot;${local.project_name}-reclamos-notifications&quot;
+		4 | 
+		5 |   tags = local.common_tags
+		6 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_26] Ensure all data stored in the SNS topic is encrypted" classname="/sns.tf.aws_sns_topic.control_plazos_alerts" file="/sns.tf">
+			<failure type="failure" message="Ensure all data stored in the SNS topic is encrypted">
+Resource: aws_sns_topic.control_plazos_alerts
+File: /sns.tf: 9-13
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15
+
+		9  | resource &quot;aws_sns_topic&quot; &quot;control_plazos_alerts&quot; {
+		10 |   name = &quot;${local.project_name}-control-plazos-alerts&quot;
+		11 | 
+		12 |   tags = local.common_tags
+		13 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_26] Ensure all data stored in the SNS topic is encrypted" classname="/sns.tf.aws_sns_topic.reportes_notifications" file="/sns.tf">
+			<failure type="failure" message="Ensure all data stored in the SNS topic is encrypted">
+Resource: aws_sns_topic.reportes_notifications
+File: /sns.tf: 16-20
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15
+
+		16 | resource &quot;aws_sns_topic&quot; &quot;reportes_notifications&quot; {
+		17 |   name = &quot;${local.project_name}-reportes-notifications&quot;
+		18 | 
+		19 |   tags = local.common_tags
+		20 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_26] Ensure all data stored in the SNS topic is encrypted" classname="/sns.tf.aws_sns_topic.urgent_notifications" file="/sns.tf">
+			<failure type="failure" message="Ensure all data stored in the SNS topic is encrypted">
+Resource: aws_sns_topic.urgent_notifications
+File: /sns.tf: 23-27
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/general-15
+
+		23 | resource &quot;aws_sns_topic&quot; &quot;urgent_notifications&quot; {
+		24 |   name = &quot;${local.project_name}-urgent-notifications&quot;
+		25 | 
+		26 |   tags = local.common_tags
+		27 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_57] Ensure Secrets Manager secrets should have automatic rotation enabled" classname="/secrets_manager.tf.aws_secretsmanager_secret.api_keys" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure Secrets Manager secrets should have automatic rotation enabled">
+Resource: aws_secretsmanager_secret.api_keys
+File: /secrets_manager.tf: 2-8
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-57
+
+		2 | resource &quot;aws_secretsmanager_secret&quot; &quot;api_keys&quot; {
+		3 |   name                    = &quot;${local.project_name}/api-keys&quot;
+		4 |   description             = &quot;API keys for external services&quot;
+		5 |   recovery_window_in_days = 7
+		6 | 
+		7 |   tags = local.common_tags
+		8 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_57] Ensure Secrets Manager secrets should have automatic rotation enabled" classname="/secrets_manager.tf.aws_secretsmanager_secret.database_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure Secrets Manager secrets should have automatic rotation enabled">
+Resource: aws_secretsmanager_secret.database_config
+File: /secrets_manager.tf: 26-32
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-57
+
+		26 | resource &quot;aws_secretsmanager_secret&quot; &quot;database_config&quot; {
+		27 |   name                    = &quot;${local.project_name}/database-config&quot;
+		28 |   description             = &quot;External database configuration&quot;
+		29 |   recovery_window_in_days = 7
+		30 | 
+		31 |   tags = local.common_tags
+		32 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_57] Ensure Secrets Manager secrets should have automatic rotation enabled" classname="/secrets_manager.tf.aws_secretsmanager_secret.email_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure Secrets Manager secrets should have automatic rotation enabled">
+Resource: aws_secretsmanager_secret.email_config
+File: /secrets_manager.tf: 50-56
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-57
+
+		50 | resource &quot;aws_secretsmanager_secret&quot; &quot;email_config&quot; {
+		51 |   name                    = &quot;${local.project_name}/email-config&quot;
+		52 |   description             = &quot;Email service configuration&quot;
+		53 |   recovery_window_in_days = 7
+		54 | 
+		55 |   tags = local.common_tags
+		56 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_57] Ensure Secrets Manager secrets should have automatic rotation enabled" classname="/secrets_manager.tf.aws_secretsmanager_secret.security_config" file="/secrets_manager.tf">
+			<failure type="failure" message="Ensure Secrets Manager secrets should have automatic rotation enabled">
+Resource: aws_secretsmanager_secret.security_config
+File: /secrets_manager.tf: 75-81
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-57
+
+		75 | resource &quot;aws_secretsmanager_secret&quot; &quot;security_config&quot; {
+		76 |   name                    = &quot;${local.project_name}/security-config&quot;
+		77 |   description             = &quot;Security configuration including JWT secrets&quot;
+		78 |   recovery_window_in_days = 7
+		79 | 
+		80 |   tags = local.common_tags
+		81 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_144] Ensure that S3 bucket has cross-region replication enabled" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf">
+			<failure type="failure" message="Ensure that S3 bucket has cross-region replication enabled">
+Resource: aws_s3_bucket.frontend
+File: /s3.tf: 1-4
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-bucket-has-cross-region-replication-enabled
+
+		1 | resource &quot;aws_s3_bucket&quot; &quot;frontend&quot; {
+		2 |   bucket = &quot;${local.project_name}-frontend-${var.environment}&quot;
+		3 |   tags   = local.common_tags
+		4 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_145] Ensure that S3 buckets are encrypted with KMS by default" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf">
+			<failure type="failure" message="Ensure that S3 buckets are encrypted with KMS by default">
+Resource: aws_s3_bucket.frontend
+File: /s3.tf: 1-4
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/ensure-that-s3-buckets-are-encrypted-with-kms-by-default
+
+		1 | resource &quot;aws_s3_bucket&quot; &quot;frontend&quot; {
+		2 |   bucket = &quot;${local.project_name}-frontend-${var.environment}&quot;
+		3 |   tags   = local.common_tags
+		4 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_62] Ensure S3 buckets should have event notifications enabled" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf">
+			<failure type="failure" message="Ensure S3 buckets should have event notifications enabled">
+Resource: aws_s3_bucket.frontend
+File: /s3.tf: 1-4
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-62
+
+		1 | resource &quot;aws_s3_bucket&quot; &quot;frontend&quot; {
+		2 |   bucket = &quot;${local.project_name}-frontend-${var.environment}&quot;
+		3 |   tags   = local.common_tags
+		4 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_32] Ensure CloudFront distribution has a response headers policy attached" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure CloudFront distribution has a response headers policy attached">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/bc-aws-networking-65
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_AWS_18] Ensure the S3 bucket has access logging enabled" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf">
+			<failure type="failure" message="Ensure the S3 bucket has access logging enabled">
+Resource: aws_s3_bucket.frontend
+File: /s3.tf: 1-4
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/s3-policies/s3-13-enable-logging
+
+		1 | resource &quot;aws_s3_bucket&quot; &quot;frontend&quot; {
+		2 |   bucket = &quot;${local.project_name}-frontend-${var.environment}&quot;
+		3 |   tags   = local.common_tags
+		4 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_42] Ensure AWS CloudFront distribution uses custom SSL certificate" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure AWS CloudFront distribution uses custom SSL certificate">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-networking-policies/ensure-aws-cloudfront-distribution-uses-custom-ssl-certificate
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_get" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.reclamos_get
+File: /api_gateway.tf: 85-91
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		85 | resource &quot;aws_api_gateway_method&quot; &quot;reclamos_get&quot; {
+		86 |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		87 |   resource_id   = aws_api_gateway_resource.reclamos.id
+		88 |   http_method   = &quot;GET&quot;
+		89 |   authorization = &quot;COGNITO_USER_POOLS&quot;
+		90 |   authorizer_id = aws_api_gateway_authorizer.cognito.id
+		91 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_post" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.reclamos_post
+File: /api_gateway.tf: 94-100
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		94  | resource &quot;aws_api_gateway_method&quot; &quot;reclamos_post&quot; {
+		95  |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		96  |   resource_id   = aws_api_gateway_resource.reclamos.id
+		97  |   http_method   = &quot;POST&quot;
+		98  |   authorization = &quot;COGNITO_USER_POOLS&quot;
+		99  |   authorizer_id = aws_api_gateway_authorizer.cognito.id
+		100 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_get" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.reclamos_id_get
+File: /api_gateway.tf: 103-109
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		103 | resource &quot;aws_api_gateway_method&quot; &quot;reclamos_id_get&quot; {
+		104 |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		105 |   resource_id   = aws_api_gateway_resource.reclamos_id.id
+		106 |   http_method   = &quot;GET&quot;
+		107 |   authorization = &quot;COGNITO_USER_POOLS&quot;
+		108 |   authorizer_id = aws_api_gateway_authorizer.cognito.id
+		109 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.reclamos_id_put" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.reclamos_id_put
+File: /api_gateway.tf: 112-118
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		112 | resource &quot;aws_api_gateway_method&quot; &quot;reclamos_id_put&quot; {
+		113 |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		114 |   resource_id   = aws_api_gateway_resource.reclamos_id.id
+		115 |   http_method   = &quot;PUT&quot;
+		116 |   authorization = &quot;COGNITO_USER_POOLS&quot;
+		117 |   authorizer_id = aws_api_gateway_authorizer.cognito.id
+		118 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.reportes_get" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.reportes_get
+File: /api_gateway.tf: 121-127
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		121 | resource &quot;aws_api_gateway_method&quot; &quot;reportes_get&quot; {
+		122 |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		123 |   resource_id   = aws_api_gateway_resource.reportes.id
+		124 |   http_method   = &quot;GET&quot;
+		125 |   authorization = &quot;COGNITO_USER_POOLS&quot;
+		126 |   authorizer_id = aws_api_gateway_authorizer.cognito.id
+		127 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_53] Ensure AWS API gateway request is validated" classname="/api_gateway.tf.aws_api_gateway_method.options_reclamos" file="/api_gateway.tf">
+			<failure type="failure" message="Ensure AWS API gateway request is validated">
+Resource: aws_api_gateway_method.options_reclamos
+File: /api_gateway.tf: 200-205
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-2-53
+
+		200 | resource &quot;aws_api_gateway_method&quot; &quot;options_reclamos&quot; {
+		201 |   rest_api_id   = aws_api_gateway_rest_api.main.id
+		202 |   resource_id   = aws_api_gateway_resource.reclamos.id
+		203 |   http_method   = &quot;OPTIONS&quot;
+		204 |   authorization = &quot;NONE&quot;
+		205 | }
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_47] Ensure AWS CloudFront attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability" classname="/cloudfront.tf.aws_cloudfront_distribution.frontend" file="/cloudfront.tf">
+			<failure type="failure" message="Ensure AWS CloudFront attached WAFv2 WebACL is configured with AMR for Log4j Vulnerability">
+Resource: aws_cloudfront_distribution.frontend
+File: /cloudfront.tf: 11-85
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-general-policies/bc-aws-general-47
+
+		Code lines for this resource are too many. Please use IDE of your choice to review the file.</failure>
+		</testcase>
+		<testcase name="[NONE][CKV2_AWS_61] Ensure that an S3 bucket has a lifecycle configuration" classname="/s3.tf.aws_s3_bucket.frontend" file="/s3.tf">
+			<failure type="failure" message="Ensure that an S3 bucket has a lifecycle configuration">
+Resource: aws_s3_bucket.frontend
+File: /s3.tf: 1-4
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/aws-policies/aws-logging-policies/bc-aws-2-61
+
+		1 | resource &quot;aws_s3_bucket&quot; &quot;frontend&quot; {
+		2 |   bucket = &quot;${local.project_name}-frontend-${var.environment}&quot;
+		3 |   tags   = local.common_tags
+		4 | }
+</failure>
+		</testcase>
+	</testsuite>
+	<testsuite disabled="0" errors="0" failures="7" name="secrets scan" skipped="0" tests="7" time="0">
+		<properties>
+			<property name="directory" value="['/app']"/>
+			<property name="add_check" value="False"/>
+			<property name="list" value="False"/>
+			<property name="output" value="['junitxml']"/>
+			<property name="output_file_path" value="results.xml"/>
+			<property name="output_bc_ids" value="False"/>
+			<property name="include_all_checkov_policies" value="True"/>
+			<property name="quiet" value="False"/>
+			<property name="compact" value="False"/>
+			<property name="framework" value="['all']"/>
+			<property name="skip_framework" value="[]"/>
+			<property name="run_all_external_checks" value="False"/>
+			<property name="soft_fail" value="False"/>
+			<property name="skip_results_upload" value="False"/>
+			<property name="repo_id" value="cli_repo/app"/>
+			<property name="branch" value="master"/>
+			<property name="skip_download" value="False"/>
+			<property name="use_enforcement_rules" value="False"/>
+			<property name="external_modules_download_path" value=".external_modules"/>
+			<property name="evaluate_variables" value="True"/>
+			<property name="no_cert_verify" value="False"/>
+			<property name="create_baseline" value="False"/>
+			<property name="output_baseline_as_skipped" value="False"/>
+			<property name="secrets_scan_file_type" value="[]"/>
+			<property name="enable_secret_scan_all_files" value="False"/>
+			<property name="block_list_secret_scan" value="[]"/>
+			<property name="summary_position" value="top"/>
+			<property name="skip_resources_without_violations" value="False"/>
+			<property name="deep_analysis" value="False"/>
+			<property name="no_fail_on_crash" value="False"/>
+			<property name="mask" value="defaultdict(&lt;class 'set'&gt;, {})"/>
+			<property name="scan_secrets_history" value="False"/>
+			<property name="secrets_history_timeout" value="12h"/>
+			<property name="custom_tool_name" value="Checkov"/>
+		</properties>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.a4e7b2be719c4af5e3e02acda07891e535902b53" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: a4e7b2be719c4af5e3e02acda07891e535902b53
+File: /secrets_manager.tf: 14-15
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		14 |     geolocation_api_key = &quot;your-g**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.e569205c8281da5c6b0fb1e90b411b12ced76b78" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: e569205c8281da5c6b0fb1e90b411b12ced76b78
+File: /secrets_manager.tf: 15-16
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		15 |     maps_api_key       = &quot;your-**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.5653183308b62da75b9ab4d537e8a4fe58011485" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: 5653183308b62da75b9ab4d537e8a4fe58011485
+File: /secrets_manager.tf: 16-17
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		16 |     sms_api_key        = &quot;your-s**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.fb54cda78c32a8ed5b4d1e5d15edfc5faddcfc3d" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: fb54cda78c32a8ed5b4d1e5d15edfc5faddcfc3d
+File: /secrets_manager.tf: 17-18
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		17 |     webhook_secret     = &quot;your-w**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.60b84dda3a51ff09bc1478b601fd7ad68a108c57" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: 60b84dda3a51ff09bc1478b601fd7ad68a108c57
+File: /secrets_manager.tf: 41-42
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		41 |     external_db_password = &quot;chan**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.bca979bb89e707103384655edd0e8b0022f9866d" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: bca979bb89e707103384655edd0e8b0022f9866d
+File: /secrets_manager.tf: 64-65
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		64 |     smtp_password = &quot;your-**********&quot;
+</failure>
+		</testcase>
+		<testcase name="[NONE][CKV_SECRET_6] Base64 High Entropy String" classname="/secrets_manager.tf.3dfd10c600974c9efc61cf737dfd7de06ad09907" file="/secrets_manager.tf">
+			<failure type="failure" message="Base64 High Entropy String">
+Resource: 3dfd10c600974c9efc61cf737dfd7de06ad09907
+File: /secrets_manager.tf: 86-87
+Guideline: https://docs.prismacloud.io/en/enterprise-edition/policy-reference/secrets-policies/secrets-policy-index/git-secrets-6
+
+		86 |     jwt_secret          = &quot;your-v**********&quot;
+</failure>
+		</testcase>
+	</testsuite>
+</testsuites>
