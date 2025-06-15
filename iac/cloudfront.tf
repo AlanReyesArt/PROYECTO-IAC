@@ -82,5 +82,11 @@ resource "aws_cloudfront_distribution" "frontend" {
     minimum_protocol_version = "TLSv1.2_2021"
   }
 
+    logging_config {
+    bucket = "${aws_s3_bucket.cloudfront_logs.bucket}.s3.amazonaws.com"
+    include_cookies = false
+    prefix = "cloudfront-logs/"
+  }
+
   tags = local.common_tags
 }

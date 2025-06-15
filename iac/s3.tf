@@ -3,6 +3,31 @@ resource "aws_s3_bucket" "frontend" {
   tags   = local.common_tags
 }
 
+resource "aws_s3_bucket" "cloudfront_logs" {
+  bucket = "${local.project_name}-logs-${var.environment}"
+  tags   = local.common_tags
+}
+
+resource "aws_s3_bucket_policy" "cloudfront_logs" {
+  bucket = aws_s3_bucket.cloudfront_logs.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "AllowCloudFrontLogging"
+        Effect    = "Allow"
+        Principal = {
+          Service = "cloudfront.amazonaws.com"
+        }
+        Action   = "s3:PutObject"
+        Resource = "${aws_s3_bucket.cloudfront_logs.arn}/*"
+      }
+    ]
+  })
+}
+
+
 resource "aws_s3_bucket_public_access_block" "frontend" {
   bucket = aws_s3_bucket.frontend.id
 
