@@ -1,28 +1,28 @@
 # SNS Topic para notificaciones de reclamos
 resource "aws_sns_topic" "reclamos_notifications" {
   name = "${local.project_name}-reclamos-notifications"
-
+  kms_master_key_id = "alias/aws/sns"
   tags = local.common_tags
 }
 
 # SNS Topic para alertas de control de plazos
 resource "aws_sns_topic" "control_plazos_alerts" {
   name = "${local.project_name}-control-plazos-alerts"
-
+  kms_master_key_id = "alias/aws/sns"
   tags = local.common_tags
 }
 
 # SNS Topic para reportes
 resource "aws_sns_topic" "reportes_notifications" {
   name = "${local.project_name}-reportes-notifications"
-
+  kms_master_key_id = "alias/aws/sns"
   tags = local.common_tags
 }
 
 # SNS Topic para notificaciones urgentes
 resource "aws_sns_topic" "urgent_notifications" {
   name = "${local.project_name}-urgent-notifications"
-
+  kms_master_key_id = "alias/aws/sns"
   tags = local.common_tags
 }
 
