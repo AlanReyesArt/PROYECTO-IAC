@@ -376,7 +376,9 @@ resource "aws_iam_role_policy" "api_gateway_logs_policy" {
           "logs:GetLogEvents",
           "logs:FilterLogEvents"
         ]
-        Resource = "*"
+        Resource = [
+          "arn:aws:logs:${var.aws_region}:${data.aws_caller_identity.current.account_id}:log-group:/aws/apigateway/${local.project_name}*"
+        ]
       }
     ]
   })
