@@ -14,6 +14,10 @@ resource "aws_s3_bucket" "frontend" {
       days = 7  # Elimina versiones antiguas después de 7 días (si versioning está habilitado)
     }
   }
+    logging {
+    target_bucket = aws_s3_bucket.cloudfront_logs.id
+    target_prefix = "logs/frontend/"
+  }
 }
 
 resource "aws_s3_bucket" "cloudfront_logs" {
