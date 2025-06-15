@@ -1,6 +1,19 @@
 resource "aws_s3_bucket" "frontend" {
   bucket = "${local.project_name}-frontend-${var.environment}"
   tags   = local.common_tags
+
+  lifecycle_rule {
+    id      = "auto-expire-old-objects"
+    enabled = true
+
+    expiration {
+      days = 30  # Elimina objetos después de 30 días
+    }
+
+    noncurrent_version_expiration {
+      days = 7  # Elimina versiones antiguas después de 7 días (si versioning está habilitado)
+    }
+  }
 }
 
 resource "aws_s3_bucket" "cloudfront_logs" {
