@@ -1,0 +1,35 @@
+version: '3.8'
+
+services: 
+  jenkins: 
+    build:
+      context: .
+    container_name: jenkins
+    ports: 
+      - "5050:8080"
+      - "50050:50000"
+    environment: 
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/jenkins.yaml
+    volumes: 
+      - jenkinslab2:/var/jenkins_home  
+      - ./jenkins.yaml:/var/jenkins_home/jenkins.yaml
+    networks:
+      - jenkins-lab2
+
+  docker-agent: 
+    image: docker:24.0.7-dind
+    container_name: docker-agent
+    privileged: true
+    ports: 
+      - "2375:2375"
+    environment:
+      - DOCKER_TLS_CERTDIR=
+    networks: 
+      - jenkins-lab2 
+
+volumes:
+  jenkinslab2:
+
+networks:
+  jenkins-lab2:
+    driver: bridge
