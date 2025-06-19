@@ -72,8 +72,6 @@ Una plataforma serverless que permite a los ciudadanos presentar reclamos, hacer
 3. Retorna datos formateados (JSON, CSV)
 
 
-
-
 ##  *FASE 4: PROCESAMIENTO ASÍNCRONO*
 
 ###  *SQS-Procesamiento (Cola de Tareas)*
@@ -189,3 +187,76 @@ Ejemplo: Reclamo de Infraestructura Crítica
 4. Lambda-Validación → Verificar información
 5. Lambda-Asignación → Asignar equipo especializado
 6. Lambda-Notificaciones → Alertar múltiples stakeholders
+
+##  *ALMACENAMIENTO Y PERSISTENCIA*
+###  *DynamoDB - Base de Datos Principal*
+#### *Tabla: Reclamos*
+json
+{
+  "reclamoId": "REC-2025-001234",
+  "ciudadanoId": "CIU-12345678",
+  "fechaCreacion": "2025-06-06T10:30:00Z",
+  "tipo": "SERVICIOS_PUBLICOS",
+  "subtipo": "ALUMBRADO_PUBLICO",
+  "descripcion": "Poste de luz dañado en Av. Principal",
+  "estado": "EN_PROCESO",
+  "prioridad": "MEDIA",
+  "ubicacion": {
+    "direccion": "Av. Principal 123",
+    "coordenadas": [-12.0464, -77.0428]
+  },
+  "funcionarioAsignado": "FUNC-456",
+  "fechaVencimiento": "2025-06-20T10:30:00Z",
+  "historial": [
+    {
+      "fecha": "2025-06-06T10:30:00Z",
+      "accion": "CREADO",
+      "usuario": "CIU-12345678"
+    }
+  ]
+}
+
+
+##  *MONITOREO Y OBSERVABILIDAD*
+
+###  *CloudWatch*
+- *Logs*: Centralizados de todas las funciones Lambda
+- *Métricas*: Performance, errores, latencia
+- *Alarmas*: Notificaciones cuando hay problemas
+- *Dashboards*: Visualización en tiempo real
+
+### *IAM (Identity and Access Management)*
+- *Roles específicos* para cada Lambda
+- *Políticas de mínimo privilegio*
+- *Cross-service permissions* controlados
+
+##  *BENEFICIOS DE ESTA ARQUITECTURA*
+
+###  *Performance:*
+- Respuestas inmediatas al usuario
+- Procesamiento asíncrono en background
+- CDN global para carga rápida
+
+###  *Escalabilidad:*
+- Serverless: escala automáticamente
+- Sin servidores que gestionar
+- Pago por uso real
+
+###  *Seguridad:*
+- Autenticación centralizada con Cognito
+- Permisos granulares con IAM
+- Secrets protegidos en Secrets Manager
+
+###  *Costo-Efectividad:*
+- Sin infraestructura fija
+- Solo pagas por ejecuciones
+- Optimización automática de recursos
+
+
+##  *MÉTRICAS CLAVE A MONITOREAR*
+
+- Tiempo de respuesta API: < 500ms
+- Tasa de éxito: > 99.9%
+- Reclamos procesados/día: Variable según demanda
+- Tiempo promedio de resolución: Por tipo de reclamo
+- Satisfacción ciudadana: Encuestas post-resolución
