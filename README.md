@@ -1,3 +1,4 @@
+![Imagen de WhatsApp 2025-06-19 a las 16 49 44_99f25c22](https://github.com/user-attachments/assets/eb429201-6707-4448-8249-b6f7afa1c525)
 
 
 #  Resumen del Sistema
