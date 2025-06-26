@@ -1,33 +1,26 @@
-# docker-compose.yaml (Versión Final y Corregida)
 version: '3.8'
-
 services:
   jenkins:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: jenkins
-    privileged: true # Damos privilegios para acceder al socket de Docker
-    user: jenkins # Corremos como el usuario jenkins
+    privileged: true
     ports:
       - "5050:8080"
       - "50050:50000"
     volumes:
-      # Persistimos los datos de Jenkins
+      # Persistir datos de Jenkins
       - jenkins-data:/var/jenkins_home
-      # ¡LA CLAVE! Le damos acceso al socket de Docker del host
+      # Acceso al socket de Docker del host (CRÍTICO)
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - jenkins-net
-    depends_on:
-      - docker-agent # Nos aseguramos que el daemon de docker esté listo (aunque no lo usemos directamente)
-
-  docker-agent:
-    image: docker:24.0.7-dind
-    container_name: docker-agent
-    privileged: true
-    networks:
-      - jenkins-net
+    environment:
+      # Variable para Configuration as Code
+      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs/jenkins.yaml
+      # Saltarse el setup wizard
+      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
 
 volumes:
   jenkins-data:

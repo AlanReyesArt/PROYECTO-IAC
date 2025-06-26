@@ -1,34 +1,12 @@
-# jenkins.yaml (Versión final, simplificada y corregida)
-
 jenkins:
-  # La sección de seguridad se mantiene igual
   securityRealm:
     local:
       allowsSignup: false
       users:
         - id: "admin"
           name: "Admin"
-          # Recuerda cambiar esta contraseña o gestionarla con secrets en un entorno real
           password: "admin"
   
-  # La sección "clouds" define cómo Jenkins puede crear agentes
-  clouds:
-    - docker:
-        name: "Docker"
-        # Usamos el socket de Docker, que es más directo y estándar
-        dockerApi:
-          uri: "unix:///var/run/docker.sock"
-        
-        # Plantilla para nuestro agente de Terraform
-        templates:
-          - name: "terraform-agent-template"
-            # Esta es la etiqueta que usaremos en nuestro Jenkinsfile
-            label: "terraform-agent"
-            # ¡LA CLAVE DE LA SIMPLIFICACIÓN!
-            # En lugar de construir desde un Dockerfile, le decimos a Jenkins que
-            # simplemente use la imagen oficial de Terraform, que ya existe.
-            image: "hashicorp/terraform:1.8.5"
-            # Directorio de trabajo dentro del contenedor del agente
-            remoteFs: "/home/jenkins/agent"
-            # Con esta configuración, el workspace del job se monta automáticamente
-            # dentro del contenedor del agente, dándole acceso a los archivos
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
