@@ -21,8 +21,9 @@ resource "aws_s3_bucket" "frontend" {
 }
 
 resource "aws_s3_bucket" "cloudfront_logs" {
-  bucket = "${local.project_name}-logs-${var.environment}"
+  bucket = "${local.project_name}-logs-alt-${var.environment}"
   tags   = local.common_tags
+  force_destroy=true
 }
 
 resource "aws_s3_bucket_policy" "cloudfront_logs" {
@@ -32,24 +33,36 @@ resource "aws_s3_bucket_policy" "cloudfront_logs" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "AllowCloudFrontLogging"
+        Sid       = "AllowCloudFrontLogs"
         Effect    = "Allow"
         Principal = {
           Service = "cloudfront.amazonaws.com"
         }
         Action   = "s3:PutObject"
         Resource = "${aws_s3_bucket.cloudfront_logs.arn}/*"
+        Condition = {
+          StringEquals = {
+            "AWS:SourceAccount" = data.aws_caller_identity.current.account_id
+          }
+        }
       }
     ]
   })
 }
 
+resource "aws_s3_bucket_ownership_controls" "cloudfront_logs" {
+  bucket = aws_s3_bucket.cloudfront_logs.id
+
+  rule {
+    object_ownership = "ObjectWriter" 
+  }
+}
 
 resource "aws_s3_bucket_public_access_block" "frontend" {
   bucket = aws_s3_bucket.frontend.id
 
-  block_public_acls       = true
-  block_public_policy     = true
+  block_public_acls       = false
+  block_public_policy     = false
   ignore_public_acls      = true
   restrict_public_buckets = true
 }

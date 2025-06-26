@@ -11,9 +11,7 @@ resource "aws_cognito_user_pool" "main" {
     require_uppercase = true
   }
 
-  # Configuración de atributos
-  username_attributes = ["email"]
-  
+  # Configuración de atributos  
   alias_attributes = ["email", "preferred_username"]
 
   # Configuración de verificación
@@ -91,13 +89,13 @@ resource "aws_cognito_user_pool_client" "main" {
 
   # URLs de callback (para desarrollo local y producción)
   callback_urls = [
-    "https://${var.domain_name}/callback",
-    "http://localhost:3000/callback"
+   # "http://localhost:3000/callback" ,
+    "https://reclamos-ciudadanos-dev.auth.us-east-2.amazoncognito.com/oauth2/idpresponse"
   ]
 
   logout_urls = [
-    "https://${var.domain_name}/logout",
-    "http://localhost:3000/logout"
+   # "http://localhost:3000/logout" ,
+    "https://reclamos-ciudadanos-dev.auth.us-east-2.amazoncognito.com/logout"
   ]
 
   # Configuración OAuth

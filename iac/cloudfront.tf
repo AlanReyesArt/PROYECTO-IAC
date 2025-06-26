@@ -20,7 +20,7 @@ resource "aws_cloudfront_distribution" "frontend" {
   comment             = "${local.project_name} Frontend Distribution"
   default_root_object = "index.html"
 
-  aliases = [var.domain_name]
+  #aliases = [var.domain_name]
 
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -83,7 +83,7 @@ resource "aws_cloudfront_distribution" "frontend" {
   }
 
     logging_config {
-    bucket = "${aws_s3_bucket.cloudfront_logs.bucket}.s3.amazonaws.com"
+    bucket = aws_s3_bucket.cloudfront_logs.bucket_domain_name
     include_cookies = false
     prefix = "cloudfront-logs/"
   }

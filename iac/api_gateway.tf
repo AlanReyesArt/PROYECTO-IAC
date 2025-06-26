@@ -189,7 +189,7 @@ resource "aws_lambda_permission" "api_gateway_reclamos" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda_reclamos.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}//"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
 }
 
 resource "aws_lambda_permission" "api_gateway_reportes" {
@@ -197,7 +197,7 @@ resource "aws_lambda_permission" "api_gateway_reportes" {
   action        = "lambda:InvokeFunction"
   function_name = aws_lambda_function.lambda_reportes.function_name
   principal     = "apigateway.amazonaws.com"
-  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}//"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
 }
 
 # CORS Configuration

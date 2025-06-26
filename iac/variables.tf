@@ -10,12 +10,6 @@ variable "environment" {
   default     = "dev"
 }
 
-variable "domain_name" {
-  description = "Domain name for the platform"
-  type        = string
-  default     = "reclamos.example.com"
-}
-
 variable "notification_email" {
   description = "Email for notifications"
   type        = string

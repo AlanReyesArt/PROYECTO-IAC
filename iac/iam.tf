@@ -55,6 +55,13 @@ resource "aws_iam_role_policy" "lambda_reclamos_policy" {
       {
         Effect = "Allow"
         Action = [
+          "sqs:SendMessage"
+        ]
+        Resource = aws_sqs_queue.procesamiento_queue.arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
           "sns:Publish"
         ]
         Resource = [
@@ -117,12 +124,11 @@ resource "aws_iam_role_policy" "lambda_procesamiento_policy" {
       {
         Effect = "Allow"
         Action = [
-          "secretsmanager:GetSecretValue"
-        ]
-        Resource = [
-          aws_secretsmanager_secret.api_keys.arn,
-          aws_secretsmanager_secret.security_config.arn
-        ]
+          "sqs:ReceiveMessage",
+          "sqs:DeleteMessage",
+          "sqs:GetQueueAttributes"
+        ],
+        Resource = aws_sqs_queue.procesamiento_queue.arn
       },
       {
         Effect = "Allow"
@@ -314,15 +320,6 @@ resource "aws_iam_role_policy" "lambda_notificaciones_policy" {
       {
         Effect = "Allow"
         Action = [
-          "secretsmanager:GetSecretValue"
-        ]
-        Resource = [
-          aws_secretsmanager_secret.email_config.arn
-        ]
-      },
-      {
-        Effect = "Allow"
-        Action = [
           "dynamodb:GetItem",
           "dynamodb:Query"
         ]
@@ -338,24 +335,24 @@ resource "aws_iam_role_policy" "lambda_notificaciones_policy" {
 }
 
 # IAM Role para API Gateway
-resource "aws_iam_role" "api_gateway_role" {
-  name = "${local.project_name}-api-gateway-role"
-
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Action = "sts:AssumeRole"
-        Effect = "Allow"
-        Principal = {
-          Service = "apigateway.amazonaws.com"
-        }
-      }
-    ]
-  })
-
-  tags = local.common_tags
-}
+#resource "aws_iam_role" "api_gateway_role" {
+#  name = "${local.project_name}-api-gateway-role"
+#
+#  assume_role_policy = jsonencode({
+#    Version = "2012-10-17"
+#    Statement = [
+#      {
+#        Action = "sts:AssumeRole"
+#        Effect = "Allow"
+#        Principal = {
+#          Service = "apigateway.amazonaws.com"
+#       }
+#      }
+#    ]
+#  })
+#
+#  tags = local.common_tags
+#}
 
 # IAM Policy para API Gateway CloudWatch Logs
 resource "aws_iam_role_policy" "api_gateway_logs_policy" {

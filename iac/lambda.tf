@@ -77,18 +77,6 @@ resource "aws_iam_role_policy" "lambda_policy" {
         ]
         Resource = "*"
       },
-      {
-        Effect = "Allow"
-        Action = [
-          "secretsmanager:GetSecretValue"
-        ]
-        Resource = [
-          aws_secretsmanager_secret.api_keys.arn,
-          aws_secretsmanager_secret.database_config.arn,
-          aws_secretsmanager_secret.email_config.arn,
-          aws_secretsmanager_secret.security_config.arn
-        ]
-      }
     ]
   })
 }
@@ -108,7 +96,7 @@ resource "aws_lambda_function" "lambda_reclamos" {
       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
       SNS_TOPIC_NOTIFICATIONS    = aws_sns_topic.reclamos_notifications.arn
-      SECRETS_MANAGER_CONFIG      = aws_secretsmanager_secret.security_config.name
+      SQS_QUEUE_URL = aws_sqs_queue.procesamiento_queue.url
     }
   }
 
@@ -122,7 +110,7 @@ resource "aws_lambda_function" "lambda_reclamos" {
 resource "aws_lambda_function" "lambda_procesamiento" {
   filename         = "lambda_procesamiento.zip"
   function_name    = "${local.project_name}-procesamiento"
-  role            = aws_iam_role.lambda_role.arn
+  role            = aws_iam_role.lambda_procesamiento_role.arn
   handler         = "index.handler"
   runtime         = "python3.9"
   timeout         = 60
@@ -131,8 +119,6 @@ resource "aws_lambda_function" "lambda_procesamiento" {
     variables = {
       DYNAMODB_TABLE_RECLAMOS = aws_dynamodb_table.reclamos.name
       SNS_TOPIC_NOTIFICATIONS = aws_sns_topic.reclamos_notifications.arn
-      SECRETS_MANAGER_API_KEYS = aws_secretsmanager_secret.api_keys.name
-      SECRETS_MANAGER_CONFIG   = aws_secretsmanager_secret.security_config.name
     }
   }
 
@@ -198,7 +184,6 @@ resource "aws_lambda_function" "lambda_notificaciones" {
     variables = {
       DYNAMODB_TABLE_CIUDADANOS  = aws_dynamodb_table.ciudadanos.name
       DYNAMODB_TABLE_FUNCIONARIOS = aws_dynamodb_table.funcionarios.name
-      SECRETS_MANAGER_EMAIL      = aws_secretsmanager_secret.email_config.name
       SES_CONFIG_SET            = aws_ses_configuration_set.main.name
       FROM_EMAIL                = var.notification_email
     }
@@ -251,6 +236,31 @@ resource "aws_lambda_permission" "sns_invoke_notifications_reportes" {
   function_name = aws_lambda_function.lambda_notificaciones.function_name
   principal     = "sns.amazonaws.com"
   source_arn    = aws_sns_topic.reportes_notifications.arn
+}
+
+# Permiso para que API Gateway invoque lambda_reclamos
+resource "aws_lambda_permission" "api_gateway_invoke_reclamos" {
+  statement_id  = "AllowExecutionFromAPIGatewayReclamos"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda_reclamos.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
+}
+
+# Permiso para que API Gateway invoque lambda_reportes
+resource "aws_lambda_permission" "api_gateway_invoke_reportes" {
+  statement_id  = "AllowExecutionFromAPIGatewayReportes"
+  action        = "lambda:InvokeFunction"
+  function_name = aws_lambda_function.lambda_reportes.function_name
+  principal     = "apigateway.amazonaws.com"
+  source_arn    = "${aws_api_gateway_rest_api.main.execution_arn}/*/*"
+}
+
+resource "aws_lambda_event_source_mapping" "procesamiento_trigger" {
+  event_source_arn = aws_sqs_queue.procesamiento_queue.arn
+  function_name    = aws_lambda_function.lambda_procesamiento.arn
+  batch_size       = 5 # Cuántos mensajes procesar a la vez
+  enabled          = true
 }
 
 # Placeholder para los archivos ZIP de las funciones Lambda

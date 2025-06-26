@@ -267,9 +267,10 @@ resource "aws_cloudwatch_event_target" "lambda_control_plazos_target" {
 resource "aws_lambda_permission" "allow_eventbridge_control_plazos" {
   statement_id  = "AllowExecutionFromEventBridge"
   action        = "lambda:InvokeFunction"
-  function_name = "${local.project_name}-lambda-control-plazos"
+  function_name = "${local.project_name}-control-plazos"
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.control_plazos_schedule.arn
+  depends_on = [aws_lambda_function.lambda_control_plazos]
 }
 
 # CloudWatch Insights Queries predefinidas
