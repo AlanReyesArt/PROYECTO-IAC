@@ -19,53 +19,52 @@ pipeline {
             }
         }
 
-        // --- Inicio del bloque que necesita credenciales de AWS ---
-        stage('3. AWS Operations') {
-            // Este es el bloque de MEJORES PRÁCTICAS
-            withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                
-                stage('3.1 Security Scan (Checkov)') {
-                    steps {
-                        echo '>> Ejecutando escaneo de seguridad de IaC...'
+        // --- Etapas que requieren credenciales ---
+        stage('3. Security Scan & Tests') {
+            steps {
+                // El wrapper 'withCredentials' va DENTRO del bloque 'steps'
+                withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    
+                    script {
+                        echo "--- Ejecutando Security Scan (Checkov) ---"
                         sh 'checkov --directory . --framework terraform || true'
-                    }
-                }
-
-                stage('3.2 Unit Tests') {
-                    steps {
-                        echo '>> Ejecutando pruebas unitarias de Python...'
+                        
+                        echo "\n--- Ejecutando Unit Tests ---"
                         sh 'python3 -m unittest discover tests'
                     }
                 }
+            }
+        }
 
-                stage('3.3 Terraform Validate & Plan') {
-                    steps {
-                        script {
-                            env.AWS_REGION = 'us-east-2' // Se define la región aquí
-                            echo '>> Validando y planeando la infraestructura...'
-                            sh 'terraform init -input=false'
-                            sh 'terraform fmt -check'
-                            sh 'terraform validate'
-                            sh 'terraform plan -no-color -out=tfplan'
-                        }
-                    }
-                }
+        stage('4. Terraform Plan & Deploy') {
+            steps {
+                // El wrapper se vuelve a usar para las etapas de terraform
+                withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                    script {
+                        // Se define la región como variable de entorno
+                        env.AWS_REGION = 'us-east-2'
 
-                stage('3.4 Approve & Deploy to AWS') {
-                    when { branch 'main' }
-                    steps {
-                        timeout(time: 5, unit: 'MINUTES') {
-                            input message: '¿Aprobar el despliegue en AWS?', submitter: 'admin'
-                        }
-                        script {
-                            env.AWS_REGION = 'us-east-2'
-                            echo '>> Aplicando plan de Terraform en AWS...'
+                        echo "--- Inicializando y Validando Terraform ---"
+                        sh 'terraform init -input=false'
+                        sh 'terraform fmt -check'
+                        sh 'terraform validate'
+                        
+                        echo "\n--- Creando Plan de Terraform ---"
+                        sh 'terraform plan -no-color -out=tfplan'
+
+                        // La lógica para desplegar solo en la rama 'develop'
+                        if (env.BRANCH_NAME == 'develop') {
+                            timeout(time: 5, unit: 'MINUTES') {
+                                input message: '¿Aprobar el despliegue en AWS?', submitter: 'admin'
+                            }
+                            echo "\n--- Aplicando Plan de Terraform ---"
                             sh 'terraform apply -input=false "tfplan"'
+                        } else {
+                            echo "Despliegue omitido: No es la rama 'develop'."
                         }
                     }
                 }
-
-            } // --- Fin del bloque withCredentials ---
+            }
         }
     }
     
