@@ -8,76 +8,59 @@ Una plataforma serverless que permite a los ciudadanos presentar reclamos, hacer
 #  FASE 1: ENTRADA Y AUTENTICACIÓN
 
 #  Acceso del Usuario
-1. *Ciudadano* abre navegador y accede al dominio público
-2. *Route 53* resuelve el DNS y dirige al usuario
-3. *CloudFront* (CDN) entrega la aplicación web estática desde caché global
-4. *S3* sirve archivos estáticos (HTML, CSS, JS, imágenes) a CloudFront
-5. *Cognito* maneja autenticación:
-   - Login con usuario/contraseña
-   - Registro de nuevos usuarios
-   - Recuperación de contraseñas
-   - *Genera JWT token* para sesiones seguras
+- Navegador del Usuario: El ciudadano o funcionario accede a la aplicación web.
+- CloudFront (CDN): Entrega la aplicación web estática (frontend) desde su caché global para un acceso rápido y de baja latencia.
+- S3 (Simple Storage Service): Sirve como el origen de los archivos estáticos (HTML, CSS, JS, imágenes) para CloudFront.
+- WAF (Web Application Firewall): Protege el API Gateway de ataques web comunes, actuando como un escudo de seguridad.
+- Cognito: Maneja la autenticación de usuarios (registro, inicio de sesión) y genera un JWT token para autorizar las solicitudes a la API de forma segura.
 
 
 ##  *FASE 2: DISTRIBUCIÓN DE SOLICITUDES*
 
 ###  *API Gateway - El Portero Inteligente*
-*API Gateway* recibe todas las peticiones del frontend y las distribuye según el tipo:
+*API Gateway recibe todas las peticiones del frontend (ya protegidas por WAF) y las distribuye según el endpoint invocado:
 
-| *Tipo de Solicitud* | *Método HTTP* | *Endpoint* | *Destino* |
-|----------------------|-----------------|--------------|-------------|
-| Crear reclamo | POST /reclamos | /reclamos | *Lambda-Reclamos* |
-| Consultar reclamo | GET /reclamos/{id} | /reclamos/{id} | *Lambda-Reclamos* |
-| Actualizar reclamo | PUT /reclamos/{id} | /reclamos/{id} | *Lambda-Reclamos* |
-| Listar reclamos | GET /reclamos | /reclamos | *Lambda-Reclamos* |
-| Generar reportes | GET /reportes | /reportes | *Lambda-Reportes* |
+| *Tipo de Solicitud* | *Endpoint* | *Destino* |
+|--------------------|--------------|-------------|
+| Crear reclamo | POST /reclamos  | *Lambda-Reclamos* |
+| Consultar reclamo | GET /reclamos/{id} | *Lambda-Reclamos* |
+| Actualizar reclamo | PUT /reclamos/{id}  | *Lambda-Reclamos* |
+| Listar reclamos | GET /reclamos | *Lambda-Reclamos* |
+| Generar reportes | GET /reportes  | *Lambda-Reportes* |
 
 ###  *Validaciones en API Gateway:*
-- Verifica JWT token de Cognito
-- Valida formato de requests
-- Aplica rate limiting
-- Logs de auditoría
+- Verifica el JWT token de Cognito en cada solicitud.
+- Valida el formato de las solicitudes.
+- Registra logs de auditoría para cada llamada.
 
 
 ##  *FASE 3: PROCESAMIENTO PRINCIPAL*
 
 ###  Lambda-Reclamos
+## Propósito: Capturar nuevos reclamos de forma inmediata.
+## Acción:
 
-#### *Crear Reclamo Nuevo:*
-
-1. Recibe solicitud POST con datos del reclamo
-2. Valida datos obligatorios (ciudadano, tipo, descripción)
-3. Genera ID único y timestamp
-4. Guarda en DynamoDB tabla "Reclamos"
-5. ENVÍA mensaje a SQS-Procesamiento para proceso asíncrono
-6. Retorna respuesta inmediata al usuario (201 Created)
-
-
-#### *Consultar/Actualizar Reclamos:*
-
-1. Ejecuta operación CRUD en DynamoDB
-2. Aplica filtros de seguridad (usuario solo ve sus reclamos)
-3. Para actualizaciones: envía a SQS si requiere procesamiento adicional
-4. Retorna datos al frontend
+- Recibe la solicitud POST desde API Gateway con los datos del reclamo.
+- Valida los datos básicos.
+- Envía un mensaje con los datos del reclamo a la cola SQS-Procesamiento para su manejo asíncrono.
+- Retorna una respuesta inmediata al usuario (ej. 202 Accepted), indicando que el reclamo fue recibido.
 
 
 ###  *Lambda-Reportes (Analytics & Reports)*
 
-1. Consulta DynamoDB con filtros complejos
-2. Procesa datos para generar:
-   - Reportes por período
-   - Estadísticas por categoría
-   - Métricas de rendimiento
-   - Dashboards para funcionarios
-3. Retorna datos formateados (JSON, CSV)
+## Propósito: Generar reportes y estadísticas para los funcionarios.
+# Acción:
 
+1. Consulta directamente la base de datos DynamoDB con filtros complejos (por fecha, tipo, estado).
+2. Procesa y agrega los datos para generar los reportes.
+3. Retorna los datos formateados (ej. JSON) al frontend.
 
 ##  *FASE 4: PROCESAMIENTO ASÍNCRONO*
 
 ###  *SQS-Procesamiento (Cola de Tareas)*
-- *Propósito*: Desacoplar procesamiento pesado del flujo principal
-- *Beneficios*: Usuario no espera, mejor performance
-- *Contenido*: Mensajes con ID de reclamo y tipo de procesamiento
+- *Propósito*: Desacoplar la recepción de reclamos de su procesamiento pesado.
+- *Beneficios*: El usuario no espera, el sistema es más resiliente y maneja picos de carga sin problemas.
+- *Contenido*: Mensajes con la información de cada reclamo enviado por Lambda-Reclamos.
 
 ###  *Lambda-Procesamiento (Trabajo Pesado)*
 *Se activa automáticamente cuando hay mensajes en SQS:*
@@ -94,24 +77,10 @@ Una plataforma serverless que permite a los ciudadanos presentar reclamos, hacer
    - Consulta APIs externas (si necesario)
    - Obtiene datos geográficos
    - Valida información del ciudadano
-   - Accede a Secrets Manager para claves de APIs externas
 
 3.  ACTUALIZACIÓN EN BASE DE DATOS:
    - Actualiza registro en DynamoDB con nueva información
    - Cambia estado: "PENDIENTE" → "EN_PROCESO"
-
-4.  GENERACIÓN DE NOTIFICACIONES:
-   - Si requiere notificación → Envía mensaje a SNS
-   - Si reclamo es urgente → Notificación inmediata
-   - Si es rutinario → Programar notificación
-
-
-###  *Secrets Manager Integration:*
-- Lambda-Procesamiento obtiene claves seguras para:
-  - APIs de terceros
-  - Credenciales de bases de datos externas
-  - Tokens de servicios de geolocalización
-
 
 
 ##  *FASE 5: SISTEMA DE NOTIFICACIONES*
@@ -137,12 +106,6 @@ Una plataforma serverless que permite a los ciudadanos presentar reclamos, hacer
    - SMS para casos urgentes
    - Push notifications para funcionarios
 4. Envía a SES para entrega final
-
-
-###  *SES (Simple Email Service)*
-- Envía emails con plantillas profesionales
-- Maneja bounces y complaints
-- Tracking de entrega y apertura
 
 
 ##  *FASE 6: CONTROL AUTOMÁTICO DE PLAZOS*
@@ -173,20 +136,6 @@ Una plataforma serverless que permite a los ciudadanos presentar reclamos, hacer
    - Notifica a funcionarios responsables
    - Alerta a supervisores en casos críticos
 
-
-
-##  *FASE 7: ORQUESTACIÓN COMPLEJA (OPCIONAL)*
-
-###  *Step Functions (Workflow Orchestrator)*
-Para *procesos complejos* que requieren múltiples pasos:
-
-Ejemplo: Reclamo de Infraestructura Crítica
-1. Lambda-Reclamos → Crear reclamo
-2. Lambda-Procesamiento → Clasificar como crítico
-3. API Externa → Consultar datos de infraestructura
-4. Lambda-Validación → Verificar información
-5. Lambda-Asignación → Asignar equipo especializado
-6. Lambda-Notificaciones → Alertar múltiples stakeholders
 
 ##  *ALMACENAMIENTO Y PERSISTENCIA*
 ###  *DynamoDB - Base de Datos Principal*
@@ -245,7 +194,7 @@ json
 ###  *Seguridad:*
 - Autenticación centralizada con Cognito
 - Permisos granulares con IAM
-- Secrets protegidos en Secrets Manager
+- Proteccion de borde con WAF
 
 ###  *Costo-Efectividad:*
 - Sin infraestructura fija
