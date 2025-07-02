@@ -1,0 +1,25 @@
+jenkins:
+  # Usamos la clase explícita para securityRealm para evitar ambigüedades
+  securityRealm:
+    hudson.security.HudsonPrivateSecurityRealm:
+      allowsSignup: false
+      users:
+        - id: "admin"
+          name: "Admin"
+          password: "${ADMIN_PASSWORD}"
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  clouds:
+    - docker:
+        name: "docker"
+        dockerApi:
+          dockerHost: 
+            uri: "unix:///var/run/docker.sock"
+        templates:
+          - image: "my-terraform-agent:latest"
+            name: "terraform-agent"
+            label: "terraform-agent"
+            remoteFs: "/home/jenkins/agent"
+            connector:
+              attach: {}

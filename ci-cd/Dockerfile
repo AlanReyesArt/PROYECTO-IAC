@@ -1,27 +1,24 @@
+# Usas la imagen oficial de Jenkins
 FROM jenkins/jenkins:lts
 
-# Cambiar a usuario root para instalar dependencias
+# Cambias a root para instalar el CLI de Docker (necesario para hablar con el socket)
 USER root
 
-# Instalar Docker CLI para que Jenkins pueda comunicarse con Docker
+ARG DOCKER_GID
+RUN addgroup --gid ${DOCKER_GID} docker
+
 RUN apt-get update && \
     apt-get install -y docker.io && \
     rm -rf /var/lib/apt/lists/*
 
-# Agregar el usuario jenkins al grupo docker
+# Agregas el usuario jenkins al grupo docker para que pueda usar el socket
 RUN usermod -aG docker jenkins
 
-# Copiar archivos de configuración
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt 
-COPY install-plugins.sh /usr/local/bin/install-plugins.sh
-COPY jenkins.yaml /var/jenkins_home/casc_configs/jenkins.yaml
+# --- Instalación de Plugins como Código ---
+# Copia la lista de plugins que definiste
+COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+# Ejecuta el script de instalación que viene en la imagen de Jenkins
+RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
 
-# Hacer ejecutable el script y instalar plugins
-RUN chmod +x /usr/local/bin/install-plugins.sh && \
-    /usr/local/bin/install-plugins.sh
-
-# Variable de entorno para Configuration as Code
-ENV CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs/jenkins.yaml
-
-# Volver al usuario jenkins
+# Vuelves al usuario jenkins
 USER jenkins

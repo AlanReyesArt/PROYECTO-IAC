@@ -9,18 +9,9 @@ pipeline {
                 checkout scm
             }
         }
-        
-        stage('2. Setup Tools') {
-            steps {
-                script {
-                    echo '>> Instalando herramientas necesarias...'
-                    sh 'apk add --no-cache python3 py3-pip && pip3 install checkov moto'
-                }
-            }
-        }
 
         // --- Etapas que requieren credenciales ---
-        stage('3. Security Scan & Tests') {
+        stage('2. Security Scan & Tests') {
             steps {
                 // El wrapper 'withCredentials' va DENTRO del bloque 'steps'
                 withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
@@ -36,7 +27,7 @@ pipeline {
             }
         }
 
-        stage('4. Terraform Plan & Deploy') {
+        stage('3. Terraform Plan & Deploy') {
             steps {
                 // El wrapper se vuelve a usar para las etapas de terraform
                 withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {

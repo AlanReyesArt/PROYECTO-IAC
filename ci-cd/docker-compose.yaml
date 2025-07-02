@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - DOCKER_GID=124
     container_name: jenkins
     privileged: true
     ports:
@@ -12,15 +14,16 @@ services:
     volumes:
       # Persistir datos de Jenkins
       - jenkins-data:/var/jenkins_home
-      # Acceso al socket de Docker del host (CRÍTICO)
+      # Montamos el archivo de configuración, esto es más flexible que usar COPY
+      - ./jenkins.yaml:/var/jenkins_home/casc_configs/jenkins.yaml
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - jenkins-net
+
     environment:
-      # Variable para Configuration as Code
-      - CASC_JENKINS_CONFIG=/var/jenkins_home/casc_configs/jenkins.yaml
-      # Saltarse el setup wizard
-      - JAVA_OPTS=-Djenkins.install.runSetupWizard=false
+      CASC_JENKINS_CONFIG: /var/jenkins_home/casc_configs/jenkins.yaml
+      JAVA_OPTS: -Djenkins.install.runSetupWizard=false
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 
 volumes:
   jenkins-data:
