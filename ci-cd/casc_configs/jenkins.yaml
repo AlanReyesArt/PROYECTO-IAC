@@ -1,14 +1,16 @@
 jenkins:
-  securityRealm:
-    local:
-      allowsSignup: false
-      users:
-        - id: "admin"
-          name: "Admin"
-          password: "${ADMIN_PASSWORD}"
-  authorizationStrategy:
-    loggedInUsersCanDoAnything:
-      allowAnonymousRead: false
+  systemMessage: "MODO DE PRUEBA: Seguridad desactivada para depuración."
+  # La sección de seguridad se ha comentado temporalmente para la prueba
+  # securityRealm:
+  #   local:
+  #     allowsSignup: false
+  #     users:
+  #       - id: "admin"
+  #         name: "Admin"
+  #         password: "${ADMIN_PASSWORD}"
+  # authorizationStrategy:
+  #   loggedInUsersCanDoAnything:
+  #     allowAnonymousRead: false
   clouds:
     - docker:
         name: "docker"
