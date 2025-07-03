@@ -11,45 +11,36 @@ os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
 # Importamos el handler después de mockear las variables de entorno
 from src.lambda_reclamos.app import handler
 
-# Usamos el decorador @mock_aws para simular los servicios de AWS
 @mock_aws
 class TestLambdaReclamos(unittest.TestCase):
 
     def setUp(self):
-    """
-    Este método se ejecuta ANTES de cada prueba.
-    Crea los recursos de AWS simulados (mock) que necesitamos.
-    """
-    import boto3
-    # Usaremos us-east-1 para todo para mantener consistencia
-    aws_region = 'us-east-2'
-
-    # --- Setup SQS (lo hacemos primero) ---
-    sqs = boto3.client('sqs', region_name=aws_region)
-    # Creamos la cola simulada
-    queue_name = 'cola-test'
-    response = sqs.create_queue(QueueName=queue_name)
-    
-    # Obtenemos la URL REAL de la cola simulada y la ponemos en la variable de entorno
-    # para que la app la pueda usar.
-    os.environ['SQS_QUEUE_URL'] = response['QueueUrl']
-
-    # --- Setup DynamoDB ---
-    dynamodb = boto3.resource('dynamodb', region_name=aws_region)
-    table_name = 'tabla-test-reclamos'
-    dynamodb.create_table(
-        TableName=table_name,
-        KeySchema=[{'AttributeName': 'reclamoId', 'KeyType': 'HASH'}],
-        AttributeDefinitions=[{'AttributeName': 'reclamoId', 'AttributeType': 'S'}],
-        ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
-    )
-    self.dynamodb_table = dynamodb.Table(table_name)
+        """
+        Este método se ejecuta ANTES de cada prueba.
+        Crea los recursos de AWS simulados (mock) que necesitamos.
+        """
+        import boto3
+        
+        # Corregido: La variable de SQS también debe definirse aquí
+        sqs = boto3.client('sqs', region_name='us-east-1')
+        response = sqs.create_queue(QueueName='cola-test')
+        os.environ['SQS_QUEUE_URL'] = response['QueueUrl']
+        
+        # Setup DynamoDB
+        dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+        dynamodb.create_table(
+            TableName='tabla-test-reclamos',
+            KeySchema=[{'AttributeName': 'reclamoId', 'KeyType': 'HASH'}],
+            AttributeDefinitions=[{'AttributeName': 'reclamoId', 'AttributeType': 'S'}],
+            ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
+        )
+        self.dynamodb_table = dynamodb.Table('tabla-test-reclamos')
 
     def test_crear_reclamo_exitoso(self):
         """
         Prueba el caso de éxito: crear un reclamo con datos válidos.
         """
-        # 1. PREPARACIÓN: Creamos el evento que simula una llamada de API Gateway
+        # 1. PREPARACIÓN
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
             "body": json.dumps({
@@ -58,18 +49,14 @@ class TestLambdaReclamos(unittest.TestCase):
             })
         }
 
-        # 2. EJECUCIÓN: Llamamos a nuestro handler de Lambda
+        # 2. EJECUCIÓN
         response = handler(test_event, {})
         
-        # 3. VERIFICACIÓN (Asserts)
-        # Verificamos que la respuesta HTTP sea la correcta (201 Created)
+        # 3. VERIFICACIÓN
         self.assertEqual(response['statusCode'], 201)
-        
-        # Verificamos que el cuerpo de la respuesta contenga el ID del reclamo
         response_body = json.loads(response['body'])
         self.assertIn('reclamoId', response_body)
         
-        # Verificamos que el reclamo se haya guardado en nuestra tabla simulada de DynamoDB
         reclamo_id = response_body['reclamoId']
         db_item = self.dynamodb_table.get_item(Key={'reclamoId': reclamo_id}).get('Item')
         
@@ -81,22 +68,19 @@ class TestLambdaReclamos(unittest.TestCase):
         """
         Prueba el caso de error: intentar crear un reclamo sin todos los datos.
         """
-        # 1. PREPARACIÓN: Evento con datos incompletos
+        # 1. PREPARACIÓN
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
-            "body": json.dumps({
-                "descripcion": "Datos incompletos"
-                # Falta ciudadanoId
-            })
+            "body": json.dumps({"descripcion": "Datos incompletos"})
         }
         
-        # 2. EJECUCIÓN:
+        # 2. EJECUCIÓN
         response = handler(test_event, {})
         
-        # 3. VERIFICACIÓN:
-        # Verificamos que la respuesta sea un error 400 (Bad Request)
+        # 3. VERIFICACIÓN
         self.assertEqual(response['statusCode'], 400)
         self.assertIn('Faltan los campos', response['body'])
 
-if __name__ == '___main__':
+# Corregido con doble guion bajo
+if __name__ == '__main__':
     unittest.main()
