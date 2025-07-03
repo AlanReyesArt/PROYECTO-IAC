@@ -9,18 +9,23 @@ pipeline {
         }
 
         stage('2. Security Scan & Tests') {
-            steps {
-                withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    script {
-                        echo "--- Ejecutando Security Scan (Checkov) ---"
-                        sh 'checkov --directory . --framework terraform || true'
-                        
-                        echo "\n--- Ejecutando Unit Tests ---"
-                        sh 'python3 -m unittest discover tests'
-                    }
-                }
+    environment {
+        // Define la región para esta etapa. Puede ser cualquier región válida.
+        AWS_REGION = 'us-east-2'
+        AWS_DEFAULT_REGION = 'us-east-2'
+    }
+    steps {
+        withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+            script {
+                echo "--- Ejecutando Security Scan (Checkov) ---"
+                sh 'checkov --directory . --framework terraform || true'
+                
+                echo "\n--- Ejecutando Unit Tests ---"
+                sh 'python3 -m unittest discover tests'
             }
         }
+    }
+}
 
         stage('3. Terraform Plan & Deploy') {
             steps {
