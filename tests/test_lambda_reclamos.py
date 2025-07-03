@@ -1,14 +1,28 @@
 import unittest
 import os
 import json
-from unittest.mock import patch
+import sys
+import boto3
 from moto import mock_aws
 
-# Debemos definir las variables de entorno ANTES de importar la app
-# para que los clientes de boto3 se inicialicen correctamente
-os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
+# --- INICIO DE LA CORRECCIÓN ---
+# 1. Agregamos el directorio 'src' al path para que Python encuentre los módulos
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# Importamos el handler después de mockear las variables de entorno
+# 2. Creamos un contexto de AWS simulado y definimos las variables ANTES de importar la app
+# Usamos un decorador en una función vacía para "activar" moto y poder crear la cola
+@mock_aws
+def setup_mock_environment():
+    sqs = boto3.client('sqs', region_name='us-east-2')
+    response = sqs.create_queue(QueueName='cola-test')
+    os.environ['SQS_QUEUE_URL'] = response['QueueUrl']
+    os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
+
+# Ejecutamos la función para que las variables de entorno existan
+setup_mock_environment()
+# ----------------------------------------------------------------
+
+# 3. AHORA SÍ importamos el handler, una vez que las variables ya existen
 from src.lambda_reclamos.app import handler
 
 @mock_aws
@@ -16,31 +30,23 @@ class TestLambdaReclamos(unittest.TestCase):
 
     def setUp(self):
         """
-        Este método se ejecuta ANTES de cada prueba.
-        Crea los recursos de AWS simulados (mock) que necesitamos.
+        Este método ahora solo se encarga de crear la tabla de DynamoDB
+        antes de cada prueba. La cola SQS ya fue creada.
         """
-        import boto3
-        
-        # Corregido: La variable de SQS también debe definirse aquí
-        sqs = boto3.client('sqs', region_name='us-east-1')
-        response = sqs.create_queue(QueueName='cola-test')
-        os.environ['SQS_QUEUE_URL'] = response['QueueUrl']
-        
-        # Setup DynamoDB
         dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+        table_name = os.environ['DYNAMODB_TABLE_RECLAMOS']
         dynamodb.create_table(
-            TableName='tabla-test-reclamos',
+            TableName=table_name,
             KeySchema=[{'AttributeName': 'reclamoId', 'KeyType': 'HASH'}],
             AttributeDefinitions=[{'AttributeName': 'reclamoId', 'AttributeType': 'S'}],
             ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
         )
-        self.dynamodb_table = dynamodb.Table('tabla-test-reclamos')
+        self.dynamodb_table = dynamodb.Table(table_name)
 
     def test_crear_reclamo_exitoso(self):
         """
         Prueba el caso de éxito: crear un reclamo con datos válidos.
         """
-        # 1. PREPARACIÓN
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
             "body": json.dumps({
@@ -48,11 +54,8 @@ class TestLambdaReclamos(unittest.TestCase):
                 "ciudadanoId": "ciudadano-007"
             })
         }
-
-        # 2. EJECUCIÓN
         response = handler(test_event, {})
         
-        # 3. VERIFICACIÓN
         self.assertEqual(response['statusCode'], 201)
         response_body = json.loads(response['body'])
         self.assertIn('reclamoId', response_body)
@@ -68,19 +71,14 @@ class TestLambdaReclamos(unittest.TestCase):
         """
         Prueba el caso de error: intentar crear un reclamo sin todos los datos.
         """
-        # 1. PREPARACIÓN
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
             "body": json.dumps({"descripcion": "Datos incompletos"})
         }
-        
-        # 2. EJECUCIÓN
         response = handler(test_event, {})
         
-        # 3. VERIFICACIÓN
         self.assertEqual(response['statusCode'], 400)
-        self.assertIn('Faltan los campos', response['body'])
+        self.assertIn('Faltan los campos requeridos', response['body'])
 
-# Corregido con doble guion bajo
 if __name__ == '__main__':
     unittest.main()
