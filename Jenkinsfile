@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-        label 'terraform-agent'
-    }
+    agent any
 
     stages {
         stage('1. Checkout') {
