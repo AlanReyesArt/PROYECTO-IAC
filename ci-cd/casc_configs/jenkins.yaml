@@ -1,5 +1,4 @@
 jenkins:
-  # Usamos la clase explícita para securityRealm para evitar ambigüedades
   securityRealm:
     hudson.security.HudsonPrivateSecurityRealm:
       allowsSignup: false
@@ -14,12 +13,12 @@ jenkins:
     - docker:
         name: "docker"
         dockerApi:
-          dockerHost: 
-            uri: "unix:///var/run/docker.sock"
+          dockerHost: "unix:///var/run/docker.sock"
         templates:
-          - image: "my-terraform-agent:latest"
-            name: "terraform-agent"
-            label: "terraform-agent"
+          - name: "terraform-agent"
+            labelString: "terraform-agent"
             remoteFs: "/home/jenkins/agent"
             connector:
               attach: {}
+            dockerTemplateBase:
+              image: "my-terraform-agent:latest"
