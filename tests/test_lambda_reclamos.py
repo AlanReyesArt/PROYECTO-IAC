@@ -7,7 +7,6 @@ from moto import mock_aws
 # Debemos definir las variables de entorno ANTES de importar la app
 # para que los clientes de boto3 se inicialicen correctamente
 os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
-os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-1.amazonaws.com/123456789012/cola-test'
 
 # Importamos el handler después de mockear las variables de entorno
 from src.lambda_reclamos.app import handler
@@ -17,24 +16,34 @@ from src.lambda_reclamos.app import handler
 class TestLambdaReclamos(unittest.TestCase):
 
     def setUp(self):
-        """
-        Este método se ejecuta ANTES de cada prueba.
-        Crea los recursos de AWS simulados (mock) que necesitamos.
-        """
-        import boto3
-        # Setup DynamoDB
-        dynamodb = boto3.resource('dynamodb', region_name='us-east-2')
-        dynamodb.create_table(
-            TableName='tabla-test-reclamos',
-            KeySchema=[{'AttributeName': 'reclamoId', 'KeyType': 'HASH'}],
-            AttributeDefinitions=[{'AttributeName': 'reclamoId', 'AttributeType': 'S'}],
-            ProvisionedThroughput={'ReadCapacityUnits': 5, 'WriteCapacityUnits': 5}
-        )
-        self.dynamodb_table = dynamodb.Table('tabla-test-reclamos')
+    """
+    Este método se ejecuta ANTES de cada prueba.
+    Crea los recursos de AWS simulados (mock) que necesitamos.
+    """
+    import boto3
+    # Usaremos us-east-1 para todo para mantener consistencia
+    aws_region = 'us-east-2'
 
-        # Setup SQS
-        sqs = boto3.client('sqs', region_name='us-east-1')
-        sqs.create_queue(QueueName='cola-test')
+    # --- Setup SQS (lo hacemos primero) ---
+    sqs = boto3.client('sqs', region_name=aws_region)
+    # Creamos la cola simulada
+    queue_name = 'cola-test'
+    response = sqs.create_queue(QueueName=queue_name)
+    
+    # Obtenemos la URL REAL de la cola simulada y la ponemos en la variable de entorno
+    # para que la app la pueda usar.
+    os.environ['SQS_QUEUE_URL'] = response['QueueUrl']
+
+    # --- Setup DynamoDB ---
+    dynamodb = boto3.resource('dynamodb', region_name=aws_region)
+    table_name = 'tabla-test-reclamos'
+    dynamodb.create_table(
+        TableName=table_name,
+        KeySchema=[{'AttributeName': 'reclamoId', 'KeyType': 'HASH'}],
+        AttributeDefinitions=[{'AttributeName': 'reclamoId', 'AttributeType': 'S'}],
+        ProvisionedThroughput={'ReadCapacityUnits': 1, 'WriteCapacityUnits': 1}
+    )
+    self.dynamodb_table = dynamodb.Table(table_name)
 
     def test_crear_reclamo_exitoso(self):
         """
