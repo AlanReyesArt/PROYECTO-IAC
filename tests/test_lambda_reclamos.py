@@ -9,10 +9,10 @@ from moto import mock_aws
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Establecemos las variables de entorno ANTES de importar la app
-os.environ['AWS_REGION'] = 'us-east-1'
-os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
+os.environ['AWS_REGION'] = 'us-east-2'
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-2'
 os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
-os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-1.amazonaws.com/123456789012/cola-test'
+os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-2.amazonaws.com/123456789012/cola-test'
 
 # Importamos el handler de forma segura
 from src.lambda_reclamos.app import handler
@@ -38,7 +38,7 @@ class TestLambdaReclamos(unittest.TestCase):
         )
         self.dynamodb_table = dynamodb.Table(os.environ['DYNAMODB_TABLE_RECLAMOS'])
 
-    # --- PRUEBA 1 (EXISTENTE) ---
+    # --- PRUEBA 1 
     def test_crear_reclamo_exitoso(self):
         """Prueba el caso de éxito con datos válidos."""
         test_event = {
@@ -51,7 +51,7 @@ class TestLambdaReclamos(unittest.TestCase):
         response = handler(test_event, {})
         self.assertEqual(response['statusCode'], 201)
 
-    # --- PRUEBA 2 (EXISTENTE) ---
+    # --- PRUEBA 2 
     def test_crear_reclamo_con_datos_faltantes(self):
         """Prueba el caso de error cuando faltan campos requeridos."""
         test_event = {
@@ -62,7 +62,7 @@ class TestLambdaReclamos(unittest.TestCase):
         self.assertEqual(response['statusCode'], 400)
         self.assertIn('Faltan los campos requeridos', response['body'])
 
-    # --- PRUEBA 3 (NUEVA) ---
+    # --- PRUEBA 3 
     def test_metodo_http_no_permitido(self):
         """Prueba que la Lambda rechace métodos que no sean POST."""
         test_event = {
@@ -72,7 +72,7 @@ class TestLambdaReclamos(unittest.TestCase):
         self.assertEqual(response['statusCode'], 405)
         self.assertIn('Método no permitido', response['body'])
 
-    # --- PRUEBA 4 (NUEVA) ---
+    # --- PRUEBA 4 
     def test_body_vacio_o_ausente(self):
         """Prueba el manejo de una petición sin cuerpo (body)."""
         test_event = {
@@ -83,7 +83,7 @@ class TestLambdaReclamos(unittest.TestCase):
         self.assertEqual(response['statusCode'], 400)
         self.assertIn('Cuerpo de la petición inválido', response['body'])
 
-    # --- PRUEBA 5 (NUEVA) ---
+    # --- PRUEBA 5 
     def test_json_malformado_en_body(self):
         """Prueba el manejo de un cuerpo que no es un JSON válido."""
         test_event = {
