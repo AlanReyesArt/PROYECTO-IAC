@@ -89,5 +89,5 @@ class TestLambdaReclamos(unittest.TestCase):
         self.assertEqual(response['statusCode'], 400)
         self.assertIn('Faltan los campos', response['body'])
 
-if _name_ == '_main_':
+if __name__ == '___main__':
     unittest.main()
