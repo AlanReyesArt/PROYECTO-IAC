@@ -28,30 +28,37 @@ pipeline {
 }
 
         stage('3. Terraform Plan & Deploy') {
-            steps {
-                withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
-                    script {
-                        env.AWS_REGION = 'us-east-2'
-                        echo "--- Inicializando y Validando Terraform ---"
-                        sh 'terraform init -input=false'
-                        sh 'terraform validate'
-                        
-                        echo "\n--- Creando Plan de Terraform ---"
-                        sh 'terraform plan -no-color -out=tfplan'
+    steps {
+        withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+            
+            // --- INICIO DE LA CORRECCIÓN ---
+            // Cambiamos al directorio 'iac' antes de ejecutar los comandos de terraform
+            dir('iac') {
+                script {
+                    env.AWS_REGION = 'us-east-2'
 
-                        if (env.BRANCH_NAME == 'develop') {
-                            timeout(time: 5, unit: 'MINUTES') {
-                                input message: '¿Aprobar el despliegue en AWS?', submitter: 'admin'
-                            }
-                            echo "\n--- Aplicando Plan de Terraform ---"
-                            sh 'terraform apply -input=false "tfplan"'
-                        } else {
-                            echo "Despliegue omitido: No es la rama 'develop'."
+                    echo "--- Inicializando y Validando Terraform ---"
+                    sh 'terraform init -input=false'
+                    sh 'terraform validate'
+                    
+                    echo "\n--- Creando Plan de Terraform ---"
+                    sh 'terraform plan -no-color -out=tfplan'
+
+                    if (env.BRANCH_NAME == 'develop') {
+                        timeout(time: 5, unit: 'MINUTES') {
+                            input message: '¿Aprobar el despliegue en AWS?', submitter: 'admin'
                         }
+                        echo "\n--- Aplicando Plan de Terraform ---"
+                        sh 'terraform apply -input=false "tfplan"'
+                    } else {
+                        echo "Despliegue omitido: No es la rama 'develop'."
                     }
                 }
             }
+            // --- FIN DE LA CORRECCIÓN ---
         }
+    }
+}
     }
     
     post {
