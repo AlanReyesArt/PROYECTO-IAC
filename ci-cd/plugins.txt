@@ -1,15 +1,11 @@
-# --- Plugins Esenciales ---
+# Plugins Esenciales
 configuration-as-code:latest
 workflow-aggregator:latest
 git:latest
 
-# --- Plugins para Seguridad y Autorización ---
+# Plugins para Seguridad y Autorización
 matrix-auth:latest
 aws-credentials:latest
 
-# --- Plugins para Integraciones ---
+# Plugin para Agentes Dinámicos con Docker
 docker-plugin:latest
-generic-webhook-trigger:latest
-
-# --- Plugins para la Interfaz de Usuario ---
-blueocean:latest

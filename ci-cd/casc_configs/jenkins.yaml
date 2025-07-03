@@ -1,6 +1,6 @@
 jenkins:
   securityRealm:
-    hudson.security.HudsonPrivateSecurityRealm:
+    local:
       allowsSignup: false
       users:
         - id: "admin"
@@ -13,11 +13,13 @@ jenkins:
     - docker:
         name: "docker"
         dockerApi:
-          dockerHost: "unix:///var/run/docker.sock"
+          dockerHost:
+            uri: "unix:///var/run/docker.sock"
         templates:
           - name: "terraform-agent"
             labelString: "terraform-agent"
             remoteFs: "/home/jenkins/agent"
+            instanceCapStr: "1"
             connector:
               attach: {}
             dockerTemplateBase:

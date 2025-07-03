@@ -5,7 +5,8 @@ services:
       context: .
       dockerfile: Dockerfile
       args:
-        - DOCKER_GID=124
+        # Reemplaza '124' con el GID de tu sistema si es diferente
+        - DOCKER_GID=124 
     container_name: jenkins
     privileged: true
     ports:
@@ -13,13 +14,13 @@ services:
       - "50050:50000"
     volumes:
       - jenkins-data:/var/jenkins_home
-      # CORRECCIÓN: Montamos la carpeta completa, no solo el archivo.
+      # Monta la carpeta de configuración completa
       - ./casc_configs:/var/jenkins_home/casc_configs
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - jenkins-net
     environment:
-      # CORRECCIÓN: Apuntamos a la carpeta, Jenkins buscará los .yaml adentro.
+      # Apunta a la carpeta, Jenkins buscará los .yaml adentro
       CASC_JENKINS_CONFIG: /var/jenkins_home/casc_configs
       JAVA_OPTS: -Djenkins.install.runSetupWizard=false
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}

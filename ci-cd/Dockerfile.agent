@@ -1,13 +1,9 @@
-# Usamos una imagen base oficial de Jenkins para agentes basada en Alpine Linux
 FROM jenkins/inbound-agent:alpine-jdk17
 
-# Definimos la versión de Terraform como un argumento para facilitar futuras actualizaciones
 ARG TERRAFORM_VERSION=1.9.0
-
-# Cambiamos al usuario root para instalar todo el software necesario
 USER root
 
-# 1. Instalamos las herramientas que SÍ están en los repositorios de Alpine
+# Instala herramientas: python, pip, git, y las necesarias para instalar Terraform
 RUN apk add --no-cache \
     python3 \
     py3-pip \
@@ -15,14 +11,13 @@ RUN apk add --no-cache \
     curl \
     unzip
 
-# 2. Instalamos Terraform manualmente
+# Instala Terraform manualmente
 RUN curl -LO "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
     unzip "terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
     mv terraform /usr/local/bin/ && \
     rm "terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
 
-# 3. Instalamos las librerías de Python, añadiendo la opción para evitar el error
+# Instala librerías de Python
 RUN pip3 install --no-cache-dir --break-system-packages checkov moto
 
-# Volvemos al usuario jenkins por seguridad
 USER jenkins
