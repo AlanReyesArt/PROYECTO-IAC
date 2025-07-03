@@ -12,16 +12,15 @@ services:
       - "5050:8080"
       - "50050:50000"
     volumes:
-      # Persistir datos de Jenkins
       - jenkins-data:/var/jenkins_home
-      # Montamos el archivo de configuración, esto es más flexible que usar COPY
-      - ./jenkins.yaml:/var/jenkins_home/casc_configs/jenkins.yaml
+      # CORRECCIÓN: Montamos la carpeta completa, no solo el archivo.
+      - ./casc_configs:/var/jenkins_home/casc_configs
       - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - jenkins-net
-
     environment:
-      CASC_JENKINS_CONFIG: /var/jenkins_home/casc_configs/jenkins.yaml
+      # CORRECCIÓN: Apuntamos a la carpeta, Jenkins buscará los .yaml adentro.
+      CASC_JENKINS_CONFIG: /var/jenkins_home/casc_configs
       JAVA_OPTS: -Djenkins.install.runSetupWizard=false
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
 

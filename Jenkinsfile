@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'terraform-agent'
+    }
 
     stages {
         stage('1. Checkout') {
@@ -15,12 +17,7 @@ pipeline {
                 withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
                     
                     script {
-
-                        sh '''
-                        echo "--- Instalando Checkov y dependencias de Python ---"
-                        pip install --upgrade pip
-                        pip install checkov moto
-                            '''
+                        
                         echo "--- Ejecutando Security Scan (Checkov) ---"
                         sh 'checkov --directory . --framework terraform || true'
                         
