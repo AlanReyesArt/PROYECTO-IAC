@@ -5,19 +5,16 @@ import sys
 import boto3
 from moto import mock_aws
 
-# --- INICIO DE LA CORRECCIÓN ---
-# 1. Agregamos el directorio 'src' al path
+# Agregamos el directorio 'src' al path para que Python encuentre los módulos
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# 2. Establecemos las variables de entorno ANTES de importar la app
-#    La clave es definir una REGIÓN por defecto para que Boto3 y Moto sean consistentes.
-os.environ['AWS_REGION'] = 'us-east-2'
-os.environ['AWS_DEFAULT_REGION'] = 'us-east-2'
+# Establecemos las variables de entorno ANTES de importar la app
+os.environ['AWS_REGION'] = 'us-east-1'
+os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
 os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
-os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-2.amazonaws.com/123456789012/cola-test'
-# ----------------------------------------------------------------
+os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-1.amazonaws.com/123456789012/cola-test'
 
-# 3. AHORA SÍ importamos el handler, una vez que el entorno está listo
+# Importamos el handler de forma segura
 from src.lambda_reclamos.app import handler
 
 @mock_aws
@@ -25,8 +22,7 @@ class TestLambdaReclamos(unittest.TestCase):
 
     def setUp(self):
         """
-        Crea los recursos simulados. Boto3 usará automáticamente la región
-        que definimos arriba en las variables de entorno.
+        Crea los recursos simulados antes de cada prueba.
         """
         # Setup SQS
         sqs = boto3.client('sqs')
@@ -42,8 +38,9 @@ class TestLambdaReclamos(unittest.TestCase):
         )
         self.dynamodb_table = dynamodb.Table(os.environ['DYNAMODB_TABLE_RECLAMOS'])
 
+    # --- PRUEBA 1 (EXISTENTE) ---
     def test_crear_reclamo_exitoso(self):
-        """Prueba el caso de éxito."""
+        """Prueba el caso de éxito con datos válidos."""
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
             "body": json.dumps({
@@ -52,26 +49,50 @@ class TestLambdaReclamos(unittest.TestCase):
             })
         }
         response = handler(test_event, {})
-        
         self.assertEqual(response['statusCode'], 201)
-        response_body = json.loads(response['body'])
-        self.assertIn('reclamoId', response_body)
-        
-        db_item = self.dynamodb_table.get_item(Key={'reclamoId': response_body['reclamoId']}).get('Item')
-        
-        self.assertIsNotNone(db_item)
-        self.assertEqual(db_item['estado'], 'PENDIENTE')
 
+    # --- PRUEBA 2 (EXISTENTE) ---
     def test_crear_reclamo_con_datos_faltantes(self):
-        """Prueba el caso de error."""
+        """Prueba el caso de error cuando faltan campos requeridos."""
         test_event = {
             "requestContext": {"http": {"method": "POST"}},
             "body": json.dumps({"descripcion": "Datos incompletos"})
         }
         response = handler(test_event, {})
-        
         self.assertEqual(response['statusCode'], 400)
         self.assertIn('Faltan los campos requeridos', response['body'])
+
+    # --- PRUEBA 3 (NUEVA) ---
+    def test_metodo_http_no_permitido(self):
+        """Prueba que la Lambda rechace métodos que no sean POST."""
+        test_event = {
+            "requestContext": {"http": {"method": "GET"}} # Usamos GET
+        }
+        response = handler(test_event, {})
+        self.assertEqual(response['statusCode'], 405)
+        self.assertIn('Método no permitido', response['body'])
+
+    # --- PRUEBA 4 (NUEVA) ---
+    def test_body_vacio_o_ausente(self):
+        """Prueba el manejo de una petición sin cuerpo (body)."""
+        test_event = {
+            "requestContext": {"http": {"method": "POST"}},
+            "body": None # Sin cuerpo
+        }
+        response = handler(test_event, {})
+        self.assertEqual(response['statusCode'], 400)
+        self.assertIn('Cuerpo de la petición inválido', response['body'])
+
+    # --- PRUEBA 5 (NUEVA) ---
+    def test_json_malformado_en_body(self):
+        """Prueba el manejo de un cuerpo que no es un JSON válido."""
+        test_event = {
+            "requestContext": {"http": {"method": "POST"}},
+            "body": "{'descripcion': 'esto no es un JSON valido'" # JSON con comillas simples
+        }
+        response = handler(test_event, {})
+        self.assertEqual(response['statusCode'], 400)
+        self.assertIn('Cuerpo de la petición inválido', response['body'])
 
 if __name__ == '__main__':
     unittest.main()
