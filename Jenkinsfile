@@ -31,7 +31,7 @@ pipeline {
      steps {
          withCredentials([aws(credentialsId: 'aws-terraform-credentials', accessKeyVariable: 'AWS_ACCESS_KEY_ID', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
             
-              Cambiamos al directorio 'iac' antes de ejecutar los comandos de terraform
+              //Cambiamos al directorio 'iac' antes de ejecutar los comandos de terraform
              dir('iac') {
                  script {
                      env.AWS_REGION = 'us-east-2'
