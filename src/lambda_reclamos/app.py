@@ -14,7 +14,6 @@ def handler(event, context):
     """
     logger.info(f"## EVENTO RECIBIDO:\n{json.dumps(event)}")
     
-    # --- INICIO DE LA CORRECCIÓN ---
     # Inicializamos los clientes y recursos DENTRO del handler.
     # Esto asegura que en las pruebas, se usan los recursos simulados por 'moto'.
     try:

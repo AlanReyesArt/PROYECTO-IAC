@@ -5,19 +5,16 @@ import sys
 import boto3
 from moto import mock_aws
 
-# --- INICIO DE LA CORRECCIÓN ---
-# 1. Agregamos el directorio 'src' al path
+
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-# 2. Establecemos las variables de entorno ANTES de importar la app
-#    La clave es definir una REGIÓN por defecto para que Boto3 y Moto sean consistentes.
+
 os.environ['AWS_REGION'] = 'us-east-2'
 os.environ['AWS_DEFAULT_REGION'] = 'us-east-2'
 os.environ['DYNAMODB_TABLE_RECLAMOS'] = 'tabla-test-reclamos'
 os.environ['SQS_QUEUE_URL'] = 'https://sqs.us-east-2.amazonaws.com/123456789012/cola-test'
-# ----------------------------------------------------------------
 
-# 3. AHORA SÍ importamos el handler, una vez que el entorno está listo
+
 from src.lambda_reclamos.app import handler
 
 @mock_aws
